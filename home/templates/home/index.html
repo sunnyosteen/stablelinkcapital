@@ -1,0 +1,1501 @@
+
+  {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Stab</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+<link href="{% static 'css/aos.css' %}" rel="stylesheet">
+<link href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/glightbox.min.css' %}" rel="stylesheet">
+
+
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+
+<!-- Main CSS File -->
+<link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="{% url 'home' %}" class="logo d-flex align-items-center me-auto me-xl-0">
+    <img src="{% static 'images/logo1.png' %}" alt="Logo" style="
+    border-radius: 12px;">
+    <h1 class="sitename"></h1>
+</a>
+
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Investment</a></li>
+          <li><a href="#team">Team</a></li>
+          <!-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li> -->
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="#about">Get Started</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+  <!-- Hero Section -->
+<section id="hero" class="hero section">
+
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+        <div class="hero-content">
+          <h1>Secure, Smart & High-Yield Crypto Investments</h1>
+          <p>At StableLink Capital, we provide reliable, expertly managed cryptocurrency investment solutions designed to grow and secure your financial future. Our team leverages advanced analytics, strategic portfolio management, and deep industry expertise to help you build long-term wealth with confidence.</p>
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-primary">Start Investing</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1"></span>
+              <span class="stat-label">Successful Assets</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="95" data-purecounter-duration="1"></span>
+              <span class="stat-label">Success Rate</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1"></span>
+              <span class="stat-label">Experts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+        <div class="hero-visual">
+          <div class="hero-image">
+            <img src="{% static 'images/logo.png' %}" alt="StableLink Capital Crypto Investment" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-bg-elements">
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-particles"></div>
+  </div>
+
+</section><!-- /Hero Section -->
+
+   <!-- About Section -->
+<section id="about" class="about section">
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-5 align-items-center">
+
+      <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
+        <div class="content">
+          <h6 class="subtitle">Who We Are</h6>
+          <h2>Trusted Crypto Investment for Sustainable Wealth Growth</h2>
+          <p>
+            At StableLink Capital, we specialize in delivering secure and intelligent crypto investment solutions that empower individuals and organizations to build long-term financial stability. With advanced analytics, expert portfolio management, and a deep understanding of blockchain markets, we help our clients achieve steady, reliable growth in the digital asset space.
+          </p>
+
+          <ul class="features-list">
+            <li><i class="bi bi-check-circle-fill"></i><span>Secure, expertly managed crypto portfolios.</span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span>Real-time insight driven by advanced market analytics.</span></li>
+            <li><i class="bi bi-check-circle-fill"></i><span>Transparent, growth-focused investment strategies.</span></li>
+          </ul>
+
+          <a href="#" class="btn btn-primary">Discover More</a>
+        </div>
+      </div>
+
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
+        <div class="image-composition">
+          <div class="image-main">
+            <img src="{% static 'images/teaching.jpeg' %}" alt="StableLink Capital Investors" class="img-fluid" loading="lazy">
+          </div>
+          <div class="image-secondary">
+            <img src="{% static 'images/teaching2.jpg' %}" alt="Investment Growth Insights" class="img-fluid" loading="lazy">
+          </div>
+          <div class="stats-card">
+            <div class="stats-item">
+              <h3>10,000+</h3>
+              <p>Active Investors</p>
+            </div>
+            <div class="stats-item">
+              <h3>$85M+</h3>
+              <p>Total Payouts Issued</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- /About Section -->
+
+<!-- Services Section -->
+<section id="services" class="services section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Services</h2>
+    <p>Trusted crypto investment solutions designed to grow, protect, and optimize your digital assets.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+          <h4><a href="service-details.html">Crypto Portfolio Management</a></h4>
+          <p>Professionally managed investment portfolios tailored to deliver stable long-term crypto growth.</p>
+          <div class="service-badge">Most Popular</div>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-shield-lock"></i>
+          </div>
+          <h4><a href="service-details.html">Asset Protection & Security</a></h4>
+          <p>Institution-grade security solutions to safeguard your digital assets with maximum protection.</p>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-currency-bitcoin"></i>
+          </div>
+          <h4><a href="service-details.html">Crypto Investment Advisory</a></h4>
+          <p>Expert strategic guidance to help you navigate market trends and maximize investment returns.</p>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-cpu"></i>
+          </div>
+          <h4><a href="service-details.html">AI-Driven Market Insights</a></h4>
+          <p>Advanced analytics powered by AI to identify opportunities and optimize your investment timing.</p>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-piggy-bank"></i>
+          </div>
+          <h4><a href="service-details.html">Staking & Yield Growth</a></h4>
+          <p>High-yield staking programs designed to generate passive income from your crypto holdings.</p>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="bi bi-globe2"></i>
+          </div>
+          <h4><a href="service-details.html">Global Market Access</a></h4>
+          <p>Seamless access to diversified digital assets and emerging global crypto opportunities.</p>
+          <a href="service-details.html" class="service-link">
+            <span>Learn More</span>
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+<!-- ROI CALCULATOR SECTION -->
+<div class="container my-5">
+
+  <div class="row">
+    <div class="col-12 text-center" data-aos="fade-up">
+      <h2 class="fw-bold" style="color:#fff;">ROI Calculator</h2>
+      <p style="color:#dcdcdc;">Select your plan and calculate your expected returns instantly.</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-6 col-md-8">
+
+      <div class="card p-4 shadow-sm" style="border-radius:15px; background:#05071e; color:#fff; border:none;">
+        
+        <!-- Plan Selector -->
+        <label class="fw-semibold text-white">Select Plan</label>
+        <select id="planSelect" class="form-control mb-3"
+                style="height:48px; background:#0a0d2e; color:white; border:1px solid #333;">
+          <option value="" disabled selected>Choose a Plan</option>
+          <option data-roi="10"  data-duration="24 Hours">Starter Plan — 10% ROI</option>
+          <option data-roi="20"  data-duration="48 Hours">Advanced Plan — 20% ROI</option>
+          <option data-roi="30"  data-duration="3 Days">Premium Plan — 30% ROI</option>
+          <option data-roi="40"  data-duration="4 Days">Executive Plan — 40% ROI</option>
+          <option data-roi="50"  data-duration="5 Days">Ultra Plan — 50% ROI</option>
+          <option data-roi="30"  data-duration="1 Day">Christmas Mining Plan — 30% ROI</option>
+          <option data-roi="45"  data-duration="3 Days">Christmas Golding Plan — 45% ROI</option>
+        </select>
+
+        <!-- Deposit Input -->
+        <label class="fw-semibold text-white">Enter Deposit Amount ($)</label>
+        <input id="depositInput" type="number" class="form-control mb-3"
+               placeholder="Enter amount"
+               style="background:#0a0d2e; color:white; border:1px solid #333;">
+
+        <!-- Result Box -->
+        <div class="result-box p-3 mb-3 rounded"
+             style="background:#0a0d2e; border:1px solid #333;">
+          <p class="mb-1 text-white"><strong>ROI:</strong> <span id="roiValue">0%</span></p>
+          <p class="mb-1 text-white"><strong>Duration:</strong> <span id="durationValue">-</span></p>
+          <p class="mb-1 text-white"><strong>Profit:</strong> $<span id="profitValue">0.00</span></p>
+          <p class="mb-1 text-white"><strong>Total Return:</strong> $<span id="totalValue">0.00</span></p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex gap-2">
+          <button class="btn w-100"
+                  style="background:#524dd3; color:white; border:none; border-radius:12px; height:48px;"
+                  onclick="calculateROI()">
+            Calculate
+          </button>
+
+          <button class="btn w-100"
+                  style="background:#22263f; color:white; border:none; border-radius:12px; height:48px;"
+                  onclick="resetCalculator()">
+            Reset
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA SECTION BELOW CALCULATOR -->
+  <div class="row mt-5">
+    <div class="col-12 text-center" data-aos="fade-up" data-aos-delay="400">
+      <div class="services-cta">
+        <h3 style="color:white;">Grow Your Wealth with Confidence</h3>
+        <p style="color:#cccccc;">Partner with StableLink Capital for secure, intelligent, and sustainable crypto investment solutions.</p>
+        <a href="#" class="btn btn-primary"
+           style="background:#524dd3;border:none;border-radius:50px;">
+          Get Started Today
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ROI CALCULATOR SCRIPT -->
+<script>
+  const planSelect = document.getElementById("planSelect");
+  const depositInput = document.getElementById("depositInput");
+
+  function calculateROI() {
+    const selected = planSelect.options[planSelect.selectedIndex];
+    const roi = selected?.getAttribute("data-roi") || 0;
+    const duration = selected?.getAttribute("data-duration") || "-";
+    const deposit = parseFloat(depositInput.value) || 0;
+
+    const profit = (deposit * roi) / 100;
+    const total = deposit + profit;
+
+    document.getElementById("roiValue").textContent = roi + "%";
+    document.getElementById("durationValue").textContent = duration;
+    document.getElementById("profitValue").textContent = profit.toFixed(2);
+    document.getElementById("totalValue").textContent = total.toFixed(2);
+  }
+
+  function resetCalculator() {
+    planSelect.selectedIndex = 0;
+    depositInput.value = "";
+    document.getElementById("roiValue").textContent = "0%";
+    document.getElementById("durationValue").textContent = "-";
+    document.getElementById("profitValue").textContent = "0.00";
+    document.getElementById("totalValue").textContent = "0.00";
+  }
+</script>
+
+
+  </div>
+
+</section><!-- /Services Section -->
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+<section id="why-us" class="why-us section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Investment Plans</h2>
+    <p>Choose a professionally managed crypto investment plan tailored for reliable growth and sustainable returns.</p>
+  </div><!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-4">
+
+      <!-- Plan 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-cash-stack"></i>
+          </div>
+
+          <h4>Starter Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">10%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$60</strong><br>
+            Maximum Deposit: <strong>$4,000</strong><br>
+            Duration: <strong>24 Hours</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+        </div>
+      </div>
+
+      <!-- Plan 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-graph-up-arrow"></i>
+          </div>
+
+          <h4>Advanced Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">20%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$1,300</strong><br>
+            Maximum Deposit: <strong>$8,000</strong><br>
+            Duration: <strong>48 Hours</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+        </div>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-coin"></i>
+          </div>
+
+          <h4>Premium Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">30%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$2,500</strong><br>
+            Maximum Deposit: <strong>$16,000</strong><br>
+            Duration: <strong>3 Days</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+        </div>
+      </div>
+
+      <!-- Plan 4 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-award-fill"></i>
+          </div>
+
+          <h4>Executive Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">40%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$4,000</strong><br>
+            Maximum Deposit: <strong>$20,000</strong><br>
+            Duration: <strong>4 Days</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+        </div>
+      </div>
+
+      <!-- Plan 5 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-database-fill-up"></i>
+          </div>
+
+          <h4>Ultra Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">50%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$5,000</strong><br>
+            Maximum Deposit: <strong>$25,000</strong><br>
+            Duration: <strong>5 Days</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+        </div>
+      </div>
+
+      <!-- Plan 6 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-gift-fill"></i>
+          </div>
+
+          <h4>Christmas Mining Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">30%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$1,000</strong><br>
+            Maximum Deposit: <strong>$30,000</strong><br>
+            Duration: <strong>1 Day</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+
+        </div>
+      </div>
+
+      <!-- Plan 7 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="feature-card">
+
+          <div class="icon-wrapper">
+            <i class="bi bi-gem"></i>
+          </div>
+
+          <h4>Christmas Golding Plan</h4>
+
+          <div class="feature-stats">
+            <span class="stat-number">45%</span>
+            <span class="stat-label">ROI</span>
+          </div>
+
+          <p>
+            Minimum Deposit: <strong>$3,000</strong><br>
+            Maximum Deposit: <strong>$35,000</strong><br>
+            Duration: <strong>3 Days</strong>
+          </p>
+
+          <a href="#" class="modern-btn mt-2">Start</a>
+
+        </div>
+      </div>
+
+    </div>
+
+<style>
+  /* Compact CTA-style button */
+  .modern-btn {
+    display: inline-block;
+    background-color: #524dd3;
+    color: #fff !important;
+    padding: 7px 18px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border-radius: 40px;
+    text-align: center;
+    margin: 10px auto 0;
+    border: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+
+  .modern-btn:hover {
+    background: color-mix(in srgb, #524dd3, transparent 15%);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .modern-btn {
+      padding: 6px 16px;
+      font-size: 12px;
+    }
+  }
+</style>
+
+</section><!-- /Why Us Section -->
+
+    </section><!-- /Portfolio Section -->
+<!-- Why Us Section -->
+<section id="why-us" class="why-us section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Why Choose StableLink Capital</h2>
+    <p>We deliver reliable, data-backed crypto investment solutions trusted by investors worldwide.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <!-- Features Row -->
+    <div class="row g-5 align-items-start">
+
+      <!-- Feature 1 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="why-feature">
+          <div class="icon">
+            <i class="bi bi-shield-lock-fill"></i>
+          </div>
+          <h4 class="feature-title">Secure & Transparent</h4>
+          <p class="feature-desc">
+            Your assets are managed with top-tier security protocols, transparent operations, and institutional-grade reliability.
+          </p>
+          <div class="feature-stat">
+            <span class="stat-number" data-purecounter-start="0" data-purecounter-end="99" data-purecounter-duration="2">99</span>
+            <span class="stat-label">% Security Rating</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+        <div class="why-feature">
+          <div class="icon">
+            <i class="bi bi-bar-chart-line-fill"></i>
+          </div>
+          <h4 class="feature-title">Consistent Performance</h4>
+          <p class="feature-desc">
+            Our strategies are built on disciplined portfolio management and real-time market analytics for stable growth.
+          </p>
+          <div class="feature-stat">
+            <span class="stat-number" data-purecounter-start="0" data-purecounter-end="180" data-purecounter-duration="2">180</span>
+            <span class="stat-label">% Average ROI Growth</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+        <div class="why-feature">
+          <div class="icon">
+            <i class="bi bi-people-fill"></i>
+          </div>
+          <h4 class="feature-title">Expert Investment Team</h4>
+          <p class="feature-desc">
+            Our specialists combine years of financial experience with blockchain intelligence to maximize returns responsibly.
+          </p>
+          <div class="feature-stat">
+            <span class="stat-number" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2">15</span>
+            <span class="stat-label">+ Years Experience</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Row -->
+    <div class="row mt-5 align-items-center">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="feature-image">
+        <img src="{% static 'images/teacher4.jpg' %}" alt="Why Choose Us" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+        <div class="feature-content">
+          <h3 class="mb-3">Built for Investors Who Value Stability & Growth</h3>
+          <p class="lead">
+            StableLink Capital helps you grow your crypto investments through secure, optimized, and expertly managed plans.</p>
+
+          <div class="feature-list">
+
+            <div class="feature-item">
+              <i class="bi bi-check-circle-fill feature-icon"></i>
+              <div>
+                <h5>Data-Driven Insights</h5>
+                <p>Every investment decision is backed by deep analytics and real-time market intelligence.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <i class="bi bi-check-circle-fill feature-icon"></i>
+              <div>
+                <h5>Institution-Level Risk Management</h5>
+                <p>Your portfolio is monitored with advanced strategies designed for capital protection.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <i class="bi bi-check-circle-fill feature-icon"></i>
+              <div>
+                <h5>Dedicated 24/7 Support</h5>
+                <p>Our support specialists ensure you're never alone in your investment journey.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="cta-wrapper mt-4">
+            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+/* Clean, non-card Why Us design */
+.why-feature {
+  padding-right: 10px;
+}
+
+.why-feature .icon {
+  font-size: 42px;
+  color: #524dd3;
+  margin-bottom: 12px;
+}
+
+.why-feature .feature-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.why-feature .feature-desc {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.why-feature .feature-stat {
+  margin-top: 10px;
+}
+
+.why-feature .stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #524dd3;
+  margin-right: 5px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.feature-item .feature-icon {
+  color: #524dd3;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .why-feature {
+    text-align: center;
+  }
+  .feature-item {
+    text-align: left;
+  }
+}
+</style>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>What Our Investors Say</h2>
+    <p>Real feedback from individuals building stable and predictable income with StableLink Capital.</p>
+  </div>
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="testimonials-slider swiper init-swiper">
+      <script type="application/json" class="swiper-config">
+      {
+        "loop": true,
+        "speed": 600,
+        "autoplay": { "delay": 4000 },
+        "slidesPerView": 1,
+        "centeredSlides": true,
+        "spaceBetween": 20,
+        "pagination": {
+          "el": ".swiper-pagination",
+          "type": "bullets",
+          "clickable": true
+        },
+        "breakpoints": {
+          "768": { "slidesPerView": 1.5, "spaceBetween": 30 },
+          "1200": { "slidesPerView": 3, "spaceBetween": 40 }
+        }
+      }
+      </script>
+
+      <div class="swiper-wrapper">
+
+        <!-- Testimonial 1 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/LauraBennett.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>Laura Bennett</h3>
+                <span class="user-role">Long-Term Investor</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"StableLink Capital helped me turn my idle savings into a predictable income stream. The ROI tracking is transparent and reliable."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-graph-up"></i> <span>StableLink Investor</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/MichaelHarris.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>Michael Harris</h3>
+                <span class="user-role">Business Owner</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"The returns are stable, and withdrawals are fast. StableLink is now a major part of my portfolio diversification strategy."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-briefcase"></i> <span>Entrepreneur</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/SophiaTurner.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>Sophia Turner</h3>
+                <span class="user-role">Beginner Investor</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"I was new to investing, but StableLink’s support and simple plans helped me build confidence. I now earn passive income daily."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-cash-coin"></i> <span>Investor</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/DanielRoberts.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>Daniel Roberts</h3>
+                <span class="user-role">Retired Professional</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"StableLink gives me steady monthly payouts, perfect for supplementing my retirement income with zero stress."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-shield-check"></i> <span>Retired Investor</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/EmilyCarter.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>Emily Carter</h3>
+                <span class="user-role">Corporate Analyst</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"The data-driven structure at StableLink impressed me. The growth has been consistent and clearly documented."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-bar-chart-line"></i> <span>Finance Professional</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="swiper-slide">
+          <div class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="user-avatar">
+                <img src="{% static 'images/JamesWalker.jpeg' %}" alt="">
+              </div>
+              <div class="user-info">
+                <h3>James Walker</h3>
+                <span class="user-role">Tech Consultant</span>
+                <div class="rating">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-content">
+              <div class="quote-mark"><i class="bi bi-quote"></i></div>
+              <p>"High performance, excellent user experience, and reliable payouts — StableLink Capital has exceeded my expectations."</p>
+            </div>
+
+            <div class="testimonial-footer">
+              <div class="company-badge"><i class="bi bi-cpu"></i> <span>Consultant</span></div>
+              <div class="verified-badge"><i class="bi bi-patch-check-fill"></i> Verified</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Coins Accepted Section -->
+<section id="coin" class="team section">
+
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Coins Accepted Here</h2>
+    <p>StableLink Capital enables smooth deposits and withdrawals across multiple trusted cryptocurrencies.</p>
+  </div>
+  <!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+    <div class="row g-4">
+
+      <!-- Left Intro Section -->
+      <div class="col-lg-6">
+        <div class="team-intro" data-aos="fade-right" data-aos-delay="150">
+          <div class="intro-content">
+            <h3>Supported Digital Assets</h3>
+            <p>We provide secure, efficient, and diversified access to the most reliable digital currencies in the global market. Our infrastructure is built to ensure seamless processing across major blockchain networks.</p>
+
+            <div class="stats-row">
+              <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Digital Assets</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Blockchains</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Global Regions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coins Grid -->
+      <div class="col-lg-6">
+        <div class="team-grid" data-aos="fade-left" data-aos-delay="200">
+
+          <!-- Coin 1 -->
+          <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="250">
+            <div class="hexagon-inner">
+              <img src="{% static 'images/btc.jpeg'%}" alt="Accepted Coin">
+              <div class="member-overlay">
+                <h5>Bitcoin (BTC)</h5>
+                <span>Primary Network Asset</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coin 2 -->
+          <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="300">
+            <div class="hexagon-inner">
+              <img src="{% static 'images/eth.jpeg'%}" alt="Accepted Coin">
+              <div class="member-overlay">
+                <h5>Ethereum (ETH)</h5>
+                <span>Smart Contract Ecosystem</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coin 3 -->
+          <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="350">
+            <div class="hexagon-inner">
+              <img src="{% static 'images/usdt (1).jpeg'%}" alt="Accepted Coin">
+              <div class="member-overlay">
+                <h5>USDT (Tether)</h5>
+                <span>Stable Digital Currency</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coin 4 -->
+          <div class="member-hexagon" data-aos="zoom-in" data-aos-delay="400">
+            <div class="hexagon-inner">
+              <img src="{% static 'images/usdc.jpeg'%}" alt="Accepted Coin">
+              <div class="member-overlay">
+                <h5>USDC</h5>
+                <span>Regulated Stablecoin</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <section id="team" class="team section">
+    <!-- Leadership Team (unchanged) -->
+   <div class="row mt-5">
+  <div class="col-12">
+    <div class="team-carousel-wrapper" data-aos="fade-up" data-aos-delay="200">
+      <h4 class="carousel-title">Executive Board</h4>
+
+      <div class="leadership-slider swiper init-swiper">
+        <script type="application/json" class="swiper-config">
+          {
+            "loop": true,
+            "speed": 600,
+            "autoplay": { "delay": 4000 },
+            "slidesPerView": 1,
+            "spaceBetween": 0,
+            "pagination": {
+              "el": ".swiper-pagination",
+              "clickable": true
+            },
+            "breakpoints": {
+              "768": { "slidesPerView": 2 },
+              "1024": { "slidesPerView": 3 }
+            }
+          }
+        </script>
+
+        <div class="swiper-wrapper">
+
+          <!-- Leader 1 -->
+<div class="swiper-slide">
+  <div class="leader-card">
+
+    <div class="leader-icon text-center mb-3">
+      <i class="bi bi-person-circle" style="font-size: 70px; color: #524dd3;"></i>
+    </div>
+
+    <div class="leader-info">
+      <h5>Jennifer Walsh</h5>
+      <span class="position">Chief Executive Officer</span>
+      <p>Provides strategic leadership and drives the long-term vision of StableLink Capital.</p>
+      <div class="leader-contact">
+        <a href="#" class="contact-btn"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="contact-btn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Leader 2 -->
+<div class="swiper-slide">
+  <div class="leader-card">
+
+    <div class="leader-icon text-center mb-3">
+      <i class="bi bi-person-circle" style="font-size: 70px; color: #524dd3;"></i>
+    </div>
+
+    <div class="leader-info">
+      <h5>Robert Martinez</h5>
+      <span class="position">Chief Technology Officer</span>
+      <p>Oversees all technological frameworks ensuring secure blockchain integration.</p>
+      <div class="leader-contact">
+        <a href="#" class="contact-btn"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="contact-btn"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Leader 3 -->
+<div class="swiper-slide">
+  <div class="leader-card">
+
+    <div class="leader-icon text-center mb-3">
+      <i class="bi bi-person-circle" style="font-size: 70px; color: #524dd3;"></i>
+    </div>
+
+    <div class="leader-info">
+      <h5>Lisa Thompson</h5>
+      <span class="position">Head of Operations</span>
+      <p>Ensures efficient processing and reliability across all financial operations.</p>
+      <div class="leader-contact">
+        <a href="#" class="contact-btn"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="contact-btn"><i class="bi bi-twitter"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Leader 4 -->
+<div class="swiper-slide">
+  <div class="leader-card">
+
+    <div class="leader-icon text-center mb-3">
+      <i class="bi bi-person-circle" style="font-size: 70px; color: #524dd3;"></i>
+    </div>
+
+    <div class="leader-info">
+      <h5>Alex Garcia</h5>
+      <span class="position">VP of Marketing</span>
+      <p>Leads brand strategy and communications for StableLink Capital’s global audience.</p>
+      <div class="leader-contact">
+        <a href="#" class="contact-btn"><i class="bi bi-envelope"></i></a>
+        <a href="#" class="contact-btn"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+</section>
+<!-- /Coins Accepted Section -->
+
+    <!-- Contact Section -->
+ <section id="contact" class="contact section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>We’re here to assist you with deposits, withdrawals, and account support anytime.</p>
+  </div>
+  <!-- End Section Title -->
+
+  <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="row align-items-center">
+      
+      <!-- Contact Form -->
+      <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
+        <div class="contact-form-card">
+          <div class="form-header">
+            <div class="header-icon">
+              <i class="bi bi-chat-dots-fill"></i>
+            </div>
+            <h3>Send Us a Message</h3>
+            <p>Have a question about your account or need support? Our team is ready to help.</p>
+          </div>
+
+          <form action="forms/contact.php" method="post" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+              </div>
+              <div class="col-md-6 mb-3">
+                <input type="email" class="form-control" name="email" placeholder="Email Address" required="">
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+            </div>
+
+            <div class="mb-4">
+              <textarea class="form-control" name="message" rows="4"
+                placeholder="How can we assist you?" required=""></textarea>
+            </div>
+
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <span>Send Message</span>
+              <i class="bi bi-send-fill"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="200">
+        <div class="contact-info-area">
+          <div class="info-header">
+            <h3>We’re Here to Support You</h3>
+            <p>Whether you need investment assistance or account guidance, our UK support team is always ready to help.</p>
+          </div>
+
+          <div class="contact-methods">
+
+            <!-- Email -->
+            <div class="method-card" data-aos="zoom-in" data-aos-delay="250">
+              <div class="card-icon">
+                <i class="bi bi-envelope-at"></i>
+              </div>
+              <div class="card-content">
+                <h5>Email Support</h5>
+                <p>
+                  <a href="mailto:support@stablelinkcapital.com">support@stablelinkcapital.com</a>
+
+                </p>
+                <span class="response-time">Replies within 2–4 hours</span>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="method-card" data-aos="zoom-in" data-aos-delay="300">
+              <div class="card-icon">
+                <i class="bi bi-telephone"></i>
+              </div>
+              <div class="card-content">
+                <h5>Call Us</h5>
+                <p>+44 20 3287 4581</p>
+                <span class="response-time">Available 9AM – 6PM GMT</span>
+              </div>
+            </div>
+
+            <!-- Office -->
+            <div class="method-card" data-aos="zoom-in" data-aos-delay="350">
+              <div class="card-icon">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+              <div class="card-content">
+                <h5>UK Office</h5>
+                <p>12 Bishopsgate, London EC2M 3XD, United Kingdom</p>
+                <span class="response-time">Open Monday – Friday</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Stats + Social -->
+          <div class="additional-info" data-aos="fade-up" data-aos-delay="400">
+
+            <div class="info-stats">
+  <div class="stat-item">
+    <div class="stat-number">A+</div>
+    <div class="stat-label">Blockchain Security Rating</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">256-bit</div>
+    <div class="stat-label">Bank-Grade Encryption</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">99.9%</div>
+    <div class="stat-label">Platform Uptime Stability</div>
+  </div>
+</div>
+
+
+            <div class="social-connect">
+              <h6>Follow Us</h6>
+              <div class="social-links">
+                <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-github"></i></a>
+                <a href="#" class="social-link"><i class="bi bi-discord"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative dark-background">
+
+  <div class="container footer-top">
+    <div class="row gy-4">
+
+      <!-- Company Info -->
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="index.html" class="logo d-flex align-items-center">
+          <span class="sitename">StableLink Capital</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p>40 Gracechurch Street</p>
+          <p>London, EC3V 0BT, United Kingdom</p>
+          <p class="mt-3"><strong>Phone:</strong> <span>+44 20 8144 2398</span></p>
+          <p><strong>Email:</strong> 
+            <span>
+              <a href="mailto:support@stablelinkcapital.com">support@stablelinkcapital.com</a>
+            </span>
+          </p>
+        </div>
+
+        <div class="social-links d-flex mt-4">
+          <a href="#"><i class="bi bi-twitter-x"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Useful Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Our Services</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Investment Services -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Investment Plans</h4>
+        <ul>
+          <li><a href="#plans">Starter Plan</a></li>
+          <li><a href="#plans">Advanced Plan</a></li>
+          <li><a href="#plans">Premium Plan</a></li>
+          <li><a href="#plans">Executive Plan</a></li>
+          <li><a href="#plans">Ultra Plan</a></li>
+        </ul>
+      </div>
+
+      <!-- Security Section -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Our Security</h4>
+        <ul>
+          <li><a href="#">Blockchain Protection</a></li>
+          <li><a href="#">Bank-Grade Encryption</a></li>
+          <li><a href="#">Cold Wallet Storage</a></li>
+          <li><a href="#">Multi-Layer Authentication</a></li>
+          <li><a href="#">24/7 System Monitoring</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Links -->
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/contact">Contact Support</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Account Help</a></li>
+          <li><a href="#">Compliance Center</a></li>
+          <li><a href="#">Live Chat</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> 
+      <strong class="px-1 sitename">StableLink Capital</strong> 
+      <span>All Rights Reserved</span>
+    </p>
+    <div class="credits">
+      Designed by <a href="#">StableLink Capital</a>
+    </div>
+  </div>
+
+</footer>
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+<!-- Vendor JS Files -->
+<script data-cfasync="false" src="{% static 'cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'vendors/php-email-form/validate.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'js/glightbox.min.js' %}"></script>
+
+<!-- Main JS File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"68c5ca450bae485a842ff76066d69420","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+
+</html>
