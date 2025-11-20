@@ -1,0 +1,1694 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{% block title %} {{user.username|capfirst}} | Dashboard{% endblock %}</title>
+
+  <!-- Favicons -->
+  {% load static %}
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+     <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Chart.js for the professional chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+   /* Page Background Gradient */
+body.light {
+  background: #0c114a;
+  color: #0f172a;
+}
+
+body.dark {
+  background:  #0c114a;
+  color: #f8fafc;
+}
+
+    /* TradingView Widget Container */
+    .tradingview-widget-container {
+      position: relative;
+      z-index: 30;
+      margin-top: 0;
+    }
+    
+    .tradingview-widget-container__widget {
+      height: 46px;
+    }
+    
+    /* Crypto theme colors */
+    .crypto-primary { background-color: #2563eb; }
+    .crypto-secondary { background-color: #7c3aed; }
+    .crypto-accent { background-color: #06b6d4; }
+    .crypto-success { background-color: #10b981; }
+    .crypto-warning { background-color: #f59e0b; }
+    .crypto-danger { background-color: #ef4444; }
+    
+    .dark .crypto-card {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border: 1px solid #475569;
+      color: #f8fafc;
+    }
+    
+    .light .crypto-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      color: #0f172a;
+    }
+    
+    .crypto-gradient {
+      background:  #0c114a;
+    }
+    
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .dark .glass-effect {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Bottom navigation styles */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid #e2e8f0;
+      z-index: 50;
+    }
+    
+    .dark .bottom-nav {
+      background:#0c114a;
+      border-top: 1px solid #334155;
+    }
+    
+    .nav-item {
+      transition: all 0.3s ease;
+      color: #6b7280;
+    }
+    
+    .light .nav-item {
+      color:#1db869;
+    }
+    
+    .light .nav-item.active {
+      color:#1db869;
+    }
+    
+    .dark .nav-item {
+      color: #9ca3af;
+    }
+    
+    .dark .nav-item.active {
+      color:#1db869;
+    }
+    
+    /* Mobile carousel */
+    .carousel-container {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .carousel-slide {
+      scroll-snap-align: start;
+      flex: 0 0 100%;
+    }
+    
+    /* Hide scrollbar for carousel */
+    .carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .carousel-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      position: relative;
+      background: white;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    
+    .dark .modal-content {
+      background:  #0c114a;
+      border: 1px solid #334155;
+      color: #f8fafc;
+    }
+    
+    /* Custom animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Responsive improvements */
+    @media (min-width: 768px) {
+      .carousel-container {
+        scroll-snap-type: none;
+      }
+      .carousel-slide {
+        flex: 1;
+      }
+      
+      .modal-content {
+        margin: 10% auto;
+        width: 80%;
+        max-width: 600px;
+      }
+    }
+    
+    /* Custom input styles */
+    .custom-input {
+      transition: all 0.3s ease;
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #0f172a;
+    }
+    
+    .custom-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      outline: none;
+    }
+    
+    .dark .custom-input {
+      background-color: #1e293b;
+      border-color: #475569;
+      color: #f8fafc;
+    }
+    
+    .dark .custom-input:focus {
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    }
+    
+    /* Form styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+    }
+    
+    .dark .form-label {
+      color: #d1d5db;
+    }
+    
+    /* Button styles */
+    .btn {
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+    
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+    
+    .btn-success {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+    }
+    
+    /* Table styles */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .dark .data-table th,
+    .dark .data-table td {
+      border-bottom: 1px solid #374151;
+      color: #f8fafc;
+    }
+    
+    .data-table th {
+      background: #f9fafb;
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+    }
+    
+    .dark .data-table th {
+      background: #1f2937;
+      color: #f8fafc;
+    }
+
+    /* Ensure text visibility in dark mode */
+    .dark .text-gray-900 {
+      color: #f8fafc;
+    }
+    
+    .dark .text-gray-700 {
+      color: #e2e8f0;
+    }
+    
+    .dark .text-gray-600 {
+      color: #cbd5e1;
+    }
+    
+    .dark .text-gray-500 {
+      color: #94a3b8;
+    }
+    
+    .dark .text-gray-400 {
+      color: #94a3b8;
+    }
+    
+    .dark .text-blue-700 {
+      color: #93c5fd;
+    }
+    
+    .dark .text-blue-300 {
+      color: #93c5fd;
+    }
+    
+    .dark .bg-blue-50 {
+      background-color:  #0c114a;
+    }
+    
+    .dark .text-blue-700 {
+      color: #dbeafe;
+    }
+    
+    .dark .text-blue-300 {
+      color: #dbeafe;
+    }
+
+    /* Navigation icons color */
+    .light .nav-item svg {
+      color: #6b7280;
+    }
+
+    .light .nav-item.active svg {
+      color: #2563eb;
+    }
+
+    .dark .nav-item svg {
+      color: #9ca3af;
+    }
+
+    .dark .nav-item.active svg {
+      color: #60a5fa;
+    }
+
+    .dark .text-gray-900 {
+      color: #f8fafc;
+    }
+
+    .dark .text-gray-700 {
+      color: #e2e8f0;
+    }
+
+    /* Chart container styling */
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+    }
+
+  .inner-banner {
+    position: relative;
+    z-index: 0;
+    background: url("{% static 'images/banner1.png' %}") center top / cover no-repeat;
+    min-height: 200px; /* ensures it's visible */
+  }
+
+
+  /* preloader */
+  
+  </style>
+</head>
+
+
+<body class="light">
+     <!-- ======== PRELOADER START ======== -->
+      {% include 'home/includes/preloader.html' %}
+
+
+ <!-- Header -->
+<header class="sticky top-0 z-40 shadow-sm border-b border-gray-200 dark:border-gray-700" style="background: #0c114a;">
+  <div class="container mx-auto px-4 py-3">
+    <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+  <div class="flex items-center space-x-2">
+
+    <!-- Success-colored Person Icon -->
+    <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: #10b981;">
+      <i class="fas fa-user text-white text-lg"></i>
+    </div>
+
+    <!-- Username with capitalization + trimming -->
+    <h1 class="text-xl font-bold text-gray-900 dark:text-white">
+      {% with user.username as uname %}
+        {% if uname|length > 10 %}
+          {{ uname|slice:":10"|capfirst }}
+        {% else %}
+          {{ uname|capfirst }}
+        {% endif %}
+      {% endwith %}
+    </h1>
+
+  </div>
+</div>
+
+      
+      <div class="flex items-center space-x-3">
+        <!-- Google Translate Widget -->
+        <div id="custom_translate_wrapper" class="relative">
+          <div id="custom_lang_icon" class="w-8 h-8 flex items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors cursor-pointer" onclick="toggleCustomTranslate()">
+            <i class="fas fa-globe text-gray-700 dark:text-gray-300 text-sm"></i>
+          </div>
+          <div id="custom_google_translate" class="hidden absolute top-10 right-0 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-2 z-50 transition-all duration-300 opacity-0"></div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <!-- <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+          <svg id="sun-icon" class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+          </svg>
+          <svg id="moon-icon" class="w-5 h-5 text-blue-400 hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button> -->
+
+        <!-- Logout Button -->
+        <a href="{% url 'userprofile:logout' %}" class="p-2 rounded-lg bg-red-50 dark:bg-red-900 hover:bg-red-100 dark:hover:bg-red-800 transition-colors text-red-600 dark:text-red-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+          </svg>
+        </a>
+
+        <!-- User Profile -->
+        <!-- <div class="flex items-center space-x-2">
+          {% if user_profile.profile_image %}
+            <img src="{{ user_profile.profile_image.url }}" alt="Profile" class="w-8 h-8 rounded-full border-2 border-blue-500 dark:border-blue-400">
+          {% else %}
+            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <span class="text-white text-sm font-semibold">{{ user.username|first|upper }}</span>
+            </div>
+          {% endif %}
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-300 hidden sm:block">{{ user.username|capfirst }}</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Add Font Awesome for the globe icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  /* Google Translate Custom Styles */
+  #custom_google_translate .skiptranslate {
+    display: none !important;
+  }
+  
+  #custom_google_translate .goog-te-gadget {
+    font-family: inherit !important;
+    font-size: 0 !important;
+  }
+  
+  #custom_google_translate .goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  #custom_google_translate .goog-te-menu-value {
+    display: none !important;
+  }
+  
+  #custom_google_translate .goog-te-menu-frame {
+    max-width: 200px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  /* Hide the original Google Translate banner */
+  .goog-te-banner-frame {
+    display: none !important;
+  }
+  
+  body {
+    top: 0 !important;
+  }
+</style>
+
+<script>
+  // Google Translate Functions
+  function toggleCustomTranslate() {
+    const el = document.getElementById("custom_google_translate");
+    if (el.classList.contains('hidden')) {
+      el.classList.remove('hidden');
+      setTimeout(() => el.classList.remove('opacity-0'), 10);
+    } else {
+      el.classList.add('opacity-0');
+      setTimeout(() => el.classList.add('hidden'), 300);
+    }
+  }
+
+  function customGoogleTranslateInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,es,fr,de,it,pt,ru,zh-CN,ja,ar',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'custom_google_translate');
+    
+    // Close translate dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const translateWrapper = document.getElementById('custom_translate_wrapper');
+      const translateDropdown = document.getElementById('custom_google_translate');
+      
+      if (!translateWrapper.contains(event.target) && !translateDropdown.classList.contains('hidden')) {
+        translateDropdown.classList.add('opacity-0');
+        setTimeout(() => translateDropdown.classList.add('hidden'), 300);
+      }
+    });
+    
+    // Style the Google Translate dropdown
+    const style = document.createElement('style');
+    style.textContent = `
+      .goog-te-gadget-simple {
+        background: transparent !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+      .goog-te-menu-frame {
+        max-width: 200px !important;
+        border-radius: 8px !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+</script>
+
+<!-- Google Translate Script -->
+<script src="//translate.google.com/translate_a/element.js?cb=customGoogleTranslateInit"></script>
+
+  <!-- TradingView Widget -->
+  <!-- TradingView Widget BEGIN -->
+<!-- <div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "colorTheme": "dark",
+  "locale": "en",
+  "largeChartUrl": "",
+  "isTransparent": false,
+  "showSymbolLogo": true,
+  "displayMode": "adaptive"
+}
+  </script>
+</div> -->
+<!-- TradingView Widget END -->
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 pb-24 pt-6">
+    <!-- Dashboard Tab -->
+    <div id="dashboard-tab" class="tab-content fade-in">
+      <!-- Account Overview Card -->
+      <div class=" p mb-6 text-gray-900 dark:text-white">
+        <div class="relative overflow-hidden rounded-2xl p-6 mb-6 text-white shadow-lg inner-banner w-full !w-full" style="width: auto !important;">
+              <!-- Floating elements -->
+            <div class="absolute -top-4 -right-4 w-20 h-20 bg-white/10 rounded-full"></div>
+            <div class="absolute -bottom-6 -left-6 w-24 h-24 bg-white/5 rounded-full"></div>
+            
+            <div class="relative z-10">
+                <p class="text-sm font-medium text-white/90 mb-2">Profits Earned</p>
+                <p class="text-4xl font-bold mb-4">${{ profile.return_of_investment|default:"0.00" }}</p>
+                
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-white/20">
+                    <div class="flex items-center space-x-3">
+                        <span class="px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">
+                            ✅ Active Trading
+                        </span>
+                    </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-sm text-white/80">Balance:</span>
+                <span class="text-lg font-bold text-white">${{ profile.balance|default:"0.00" }}</span>
+            </div>
+        </div>
+      </div>
+</div>
+       <!-- Quick Actions -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+
+  <!-- Deposit -->
+  <button onclick="showTab('deposit')" class="crypto-card1 rounded-xl p-4 text-center transition-transform hover:scale-105">
+    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
+      <!-- New Deposit SVG -->
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" />
+      </svg>
+    </div>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Deposit</span>
+  </button>
+
+  <!-- Withdrawal -->
+  <button onclick="showTab('withdrawal')" class="crypto-card1 rounded-xl p-4 text-center transition-transform hover:scale-105">
+    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
+      <!-- New Withdrawal SVG -->
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 21V9m0 0l-4 4m4-4l4 4M5 5h14" />
+      </svg>
+    </div>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Withdrawal</span>
+  </button>
+
+  <!-- Auto Payout -->
+  <a href="{% url 'select_wallet' %}" class="crypto-card1 rounded-xl p-4 text-center transition-transform hover:scale-105">
+    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
+      <!-- New Auto-Payout SVG -->
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 12h16m0 0l-4 4m4-4l-4-4M4 6h6m0 0V3m0 3v3" />
+      </svg>
+    </div>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Auto Payout</span>
+  </a>
+
+  <!-- Transactions -->
+  <button onclick="showTab('transactions')" class="crypto-card1 rounded-xl p-4 text-center transition-transform hover:scale-105">
+    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-2">
+      <!-- New Transactions SVG -->
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h10M4 18h7" />
+      </svg>
+    </div>
+    <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Transactions</span>
+  </button>
+
+</div>
+
+
+        <!-- Stats Cards Carousel -->
+       <!-- Stats Cards Carousel -->
+      <div class="mb-8 relative">
+  <div id="" class="carousel-container flex overflow-x-auto space-x-4 md:space-x-6 md:grid md:grid-cols-3 md:overflow-visible pb-4 md:pb-0 scroll-smooth">
+    
+
+ 
+<!-- Referral Bonus Card -->
+<div class="carousel-slide mirror-shine rounded-2xl p-6 text-white min-w-full md:min-w-0">
+  <div class="flex items-center space-x-4">
+    <div class="glass-effect rounded-2xl w-14 h-14 flex items-center justify-center">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+        </path>
+      </svg>
+    </div>
+    <div>
+      <p class="text-sm opacity-90">Referral Bonus</p>
+      <p class="text-2xl font-bold">${{ profile.referral_reward|default:"0.00" }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Balance Card -->
+<div class="crypto-gradient mirror-shine rounded-2xl p-6 text-white min-w-full md:min-w-0">
+  <div class="flex items-center space-x-4">
+    <div class="glass-effect rounded-2xl w-14 h-14 flex items-center justify-center">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1">
+        </path>
+      </svg>
+    </div>
+    <div>
+      <p class="text-sm opacity-90">My Balance</p>
+      <p class="text-2xl font-bold">${{ profile.balance|default:"0.00" }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Profits Card -->
+<div class="carousel-slide mirror-shine rounded-2xl p-6 text-white min-w-full md:min-w-0">
+  <div class="flex items-center space-x-4">
+    <div class="glass-effect rounded-2xl w-14 h-14 flex items-center justify-center">
+      <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+      </svg>
+    </div>
+    <div>
+      <p class="text-sm opacity-90">Profits Earned</p>
+      <p class="text-2xl font-bold">${{ profile.return_of_investment|default:"0.00" }}</p>
+    </div>
+  </div>
+</div>
+<!-- card end and card style  -->
+
+<style>
+  .mirror-shine {
+    background: linear-gradient(
+      135deg,
+      #524dd3 0%,
+      #705df5 40%,
+      #3b34a3 100%
+    );
+    background-size: 300% 300%;
+    animation: shineMove 60s linear infinite;
+  }
+
+  @keyframes shineMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>
+
+  </div>
+</div>
+<!-- userprofile/dashboard.html -->
+ 
+<!-- REFER & EARN BUTTON -->
+<button id="refToggleBtn"
+    class="w-full max-w-md mx-auto block my-6 px-6 py-3 rounded-xl text-white font-semibold text-lg shadow-lg animate-pulse"
+    style="background: linear-gradient(135deg, #524dd3, #6d63ff, #3b34a3);">
+    🎁 Refer & Earn More Profits
+</button>
+
+<!-- HIDDEN REFERRAL SECTION -->
+<div id="referralSection"
+    class="hidden max-w-md mx-auto my-6 p-6 rounded-xl text-center shadow-md text-white"
+    style="background: linear-gradient(135deg, #524dd3 0%, #705df5 40%, #3b34a3 100%);">
+
+    <h3 class="text-2xl font-bold mb-2 flex items-center justify-center gap-2">
+        <span>💰</span> Refer & Earn
+    </h3>
+
+    <p class="opacity-90 mb-4 text-sm">
+        Share your referral link. When someone registers, their username will appear below.
+    </p>
+
+    <!-- Referral Link -->
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-2 w-full mb-3">
+        <input 
+            type="text" 
+            id="referralLinkInput" 
+            value="{{ request.scheme }}://{{ request.get_host }}{% url 'userprofile:register' %}?ref={{ user.userprofile.referral_code }}" 
+            readonly 
+            class="custom-input w-full sm:w-2/3 text-center text-black"
+        >
+        <button 
+            id="copyLinkBtn"
+            class="copy-btn bg-blue-600 px-4 py-2 text-sm sm:w-auto w-full rounded-lg font-semibold"
+        >
+            Copy Link 🔗
+        </button>
+    </div>
+
+   {% if my_referrals %}
+<div class="p-4 rounded-xl shadow-md bg-[#0c114a] border border-[#1b2377]">
+    <h3 class="font-bold mb-3 text-green-400 text-lg">People You Referred</h3>
+
+    <ul class="space-y-2">
+        {% for u in my_referrals %}
+            <li class="p-2 rounded-lg bg-[#141b5c] text-green-300 font-semibold">
+                @{{ u.user.username|slice:":5"|capfirst }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toggleBtn = document.getElementById("refToggleBtn");
+    const section = document.getElementById("referralSection");
+    const copyBtn = document.getElementById("copyLinkBtn");
+    const linkInput = document.getElementById("referralLinkInput");
+
+    // Show/Hide referral section
+    toggleBtn.addEventListener("click", () => {
+        section.classList.toggle("hidden");
+    });
+
+    // Copy referral link
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(linkInput.value);
+
+        // Change button text
+        copyBtn.textContent = "Link Copied! ✔";
+
+        // Revert after 2 seconds
+        setTimeout(() => {
+            copyBtn.textContent = "Copy Link 🔗";
+        }, 2000);
+    });
+});
+</script>
+
+<style>
+.custom-input {
+    padding: 10px 14px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+}
+
+.copy-btn {
+    color: white;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    opacity: 0.85;
+}
+</style>
+
+
+<!-- Smooth Auto-Scroll Script -->
+<script>
+  const carousel = document.getElementById('statsCarousel');
+  const slides = carousel.children;
+  let index = 0;
+
+  function autoScrollCarousel() {
+    index = (index + 1) % slides.length;
+    carousel.scrollTo({
+      left: slides[index].offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  setInterval(autoScrollCarousel, 10000); // scroll every 5 seconds
+</script>
+
+
+      </div>
+    </div>
+
+    <!-- Deposit Tab -->
+    <div id="deposit-tab" class="tab-content hidden fade-in">
+      <h3 class="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white" style="display: block !important; width: 200px !important; margin: 20px auto !important; 
+             text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
+             font-weight: bold !important; color: white !important; 
+             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
+             border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
+             cursor: pointer !important; transition: all 0.3s !important;">Fund Wallet</h3>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Deposit Form -->
+        <div class="lg:col-span-2">
+          <div class="crypto-card rounded-2xl p-6">
+            <p class="text-gray-600 dark:text-gray-400 text-center mb-6">Funds added to your wallet will be available shortly after verification.</p>
+
+            {% if messages %}
+              <div class="bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-500 p-4 mb-6 rounded">
+                {% for message in messages %}
+                  <p class="text-blue-700 dark:text-blue-300">{{ message }}</p>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'investment:deposit_view' %}" class="space-y-6">
+              {% csrf_token %}
+              
+              <div class="form-group">
+                <label class="form-label">Investment Plan</label>
+                <select name="selected_investment_plan" class="custom-input" required>
+                  <option value="">Select Investment Plan</option>
+                  {% for plan in investment_plans %}
+                    <option value="{{ plan.id }}">{{ plan.name }} - {{ plan.interest_rate }}% ROI for {{ plan.duration_days }} days</option>
+                  {% empty %}
+                    <option value="">No investment plans available</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Select Wallet</label>
+                <select name="selected_wallet" id="id_selected_wallet" class="custom-input" required>
+                  <option value="">Choose a wallet</option>
+                  {% for wallet in wallets %}
+                    <option value="{{ wallet.id }}" data-name="{{ wallet.name }}" data-address="{{ wallet.wallet_address }}">{{ wallet.name }}</option>
+                  {% empty %}
+                    <option value="">No wallets available</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Wallet Address</label>
+                <input type="text" name="wallet_address" id="id_wallet_address" class="custom-input bg-gray-50 dark:bg-gray-700" readonly required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Coin Name</label>
+                <input type="text" name="coinName" id="id_coinName" class="custom-input bg-gray-50 dark:bg-gray-700" readonly required>
+              </div>
+<div class="form-group">
+  <label class="form-label">Select Network</label>
+  <select name="network_type" class="custom-input" required>
+    <option value="" disabled selected>Choose network</option>
+
+    <!-- Bitcoin Networks -->
+    <option value="BTC">Bitcoin Network</option>
+    <option value="BTC-LN">Lightning Network</option>
+
+    <!-- EVM Networks -->
+    <option value="ERC20">Ethereum Network (ERC20)</option>
+    <option value="BEP20">Binance Smart Chain (BEP20)</option>
+    <option value="POLYGON">Polygon Network</option>
+    <option value="AVAX-C">Avalanche C-Chain</option>
+    <option value="FANTOM">Fantom Opera Network</option>
+    <option value="ARBITRUM">Arbitrum One</option>
+    <option value="OPTIMISM">Optimism Network</option>
+    <option value="BASE">Base Network</option>
+    <option value="KCC">KuCoin Community Chain</option>
+    <option value="CRO">Cronos Chain</option>
+
+    <!-- Tron -->
+    <option value="TRC20">Tron Network (TRC20)</option>
+
+    <!-- Binance Chain -->
+    <option value="BEP2">Binance Chain (BEP2)</option>
+
+    <!-- Solana -->
+    <option value="SOL">Solana Network</option>
+
+    <!-- Ripple / Stellar -->
+    <option value="XRP">Ripple Network</option>
+    <option value="XLM">Stellar Network</option>
+
+    <!-- Cosmos Ecosystem -->
+    <option value="ATOM">Cosmos Hub</option>
+    <option value="LUNA">Terra Network</option>
+    <option value="KAVA">Kava Network</option>
+
+    <!-- Cardano -->
+    <option value="ADA">Cardano Network</option>
+
+    <!-- Polkadot / Substrate -->
+    <option value="DOT">Polkadot Network</option>
+    <option value="KSM">Kusama Network</option>
+
+    <!-- Algorand -->
+    <option value="ALGO">Algorand Network</option>
+
+    <!-- Hedera -->
+    <option value="HBAR">Hedera Hashgraph</option>
+
+    <!-- Avalanche X-Chain -->
+    <option value="AVAX-X">Avalanche X-Chain</option>
+
+    <!-- Tezos -->
+    <option value="XTZ">Tezos Network</option>
+
+    <!-- Near -->
+    <option value="NEAR">Near Protocol</option>
+
+    <!-- Harmony -->
+    <option value="ONE">Harmony Network</option>
+
+    <!-- EOS -->
+    <option value="EOS">EOS Network</option>
+
+    <!-- Litecoin -->
+    <option value="LTC">Litecoin Network</option>
+
+    <!-- Monero -->
+    <option value="XMR">Monero Network</option>
+
+    <!-- Bitcoin Cash -->
+    <option value="BCH">Bitcoin Cash Network</option>
+  </select>
+</div>
+
+              <div class="form-group">
+                <label class="form-label">Amount</label>
+                <input type="number" name="amountDeposit" class="custom-input" placeholder="Enter amount" min="0.01" step="0.01" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Payment Date</label>
+                <input type="date" name="paymentDate" class="custom-input" required>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Top Up</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Coin Types -->
+        <div>
+          <div class="crypto-card rounded-2xl p-6">
+            <h4 class="text-xl font-bold text-center mb-6 text-gray-900 dark:text-white">My Wallets</h4>
+            <div class="space-y-4">
+              {% for wallet in wallets %}
+                <div class="crypto-card rounded-xl p-4 hover:shadow-lg transition-all">
+                  <div class="flex items-center space-x-3 mb-3">
+                    {% if wallet.icon %}
+                      <img src="{{ wallet.icon.url }}" alt="{{ wallet.name }}" class="w-10 h-10 rounded-lg">
+                    {% else %}
+                      <div class="w-10 h-10 crypto-gradient rounded-lg flex items-center justify-center">
+                        <span class="text-white font-semibold text-sm">{{ wallet.name|first|upper }}</span>
+                      </div>
+                    {% endif %}
+                    <p class="font-bold text-gray-900 dark:text-white">{{ wallet.name }}</p>
+                  </div>
+                  <p class="text-xs text-gray-600 dark:text-gray-400 break-all mb-2 font-mono">{{ wallet.wallet_address }}</p>
+                  <button onclick="copyText('{{ wallet.wallet_address }}')" class="btn btn-primary w-full text-sm">Copy Address</button>
+                </div>
+              {% empty %}
+                <div class="text-center py-4 text-gray-500 dark:text-gray-400">
+                  No wallets available
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Withdrawal Tab -->
+    <div id="withdrawal-tab" class="tab-content hidden fade-in">
+      <h3 class="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white" style="display: block !important; width: 200px !important; margin: 20px auto !important; 
+             text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
+             font-weight: bold !important; color: white !important; 
+             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
+             border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
+             cursor: pointer !important; transition: all 0.3s !important;">Withdraw Assets</h3>
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="crypto-card rounded-2xl p-6">
+          <p class="text-gray-600 dark:text-gray-400 text-center mb-6">Your withdrawal will be processed within minutes upon verification.</p>
+
+          {% if messages %}
+            <div class="bg-blue-50 dark:bg-blue-900 border-l-4 border-blue-500 p-4 mb-6 rounded">
+              {% for message in messages %}
+                <p class="text-blue-700 dark:text-blue-300">{{ message }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <form method="POST" action="{% url 'investment:withdrawal_view' %}" class="space-y-6">
+            {% csrf_token %}
+
+            <div class="form-group">
+              <label class="form-label">Amount to Withdraw</label>
+              <input type="number" name="amountWithdraw" class="custom-input" placeholder="Enter amount" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Wallet Address</label>
+              <input type="text" name="wallet_address" class="custom-input" placeholder="Enter wallet address" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Select Coin</label>
+              <select name="coin_type" class="custom-input" required>
+                <option value="" disabled selected>Choose coin type</option>
+                <option value="BTC">Bitcoin (BTC)</option>
+                <option value="ETH">Ethereum (ETH)</option>
+                <option value="USDT">Tether (USDT)</option>
+                <option value="BNB">Binance Coin (BNB)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Payment Date</label>
+              <input type="date" name="paymentDate" class="custom-input" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Submit Withdrawal</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transactions Tab -->
+    <div id="transactions-tab" class="tab-content hidden fade-in">
+      <div class="flex flex-col items-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Recent Transactions</h3>
+        <a href="{% url 'userprofile:transaction_statement' %}" class="text-blue-600 dark:text-blue-400 hover:underline font-semibold">View All →</a>
+      </div>
+
+      <div class="crypto-card rounded-2xl overflow-hidden">
+        <div class="table-container">
+          <table class="data-table">
+            <thead class="crypto-gradient text-white">
+              <tr>
+                <th class="px-6 py-4 text-left font-semibold">ID</th>
+                <th class="px-6 py-4 text-left font-semibold">Description</th>
+                <th class="px-6 py-4 text-left font-semibold">Type</th>
+                <th class="px-6 py-4 text-left font-semibold">Date</th>
+                <th class="px-6 py-4 text-left font-semibold">Amount</th>
+                <th class="px-6 py-4 text-left font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for transaction in transactions %}
+                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                  <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">#{{ transaction.id }}</td>
+                  <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">{{ transaction.description }}</td>
+                  <td class="px-6 py-4">
+                    <span class="{% if transaction.transaction_type == 'deposit' %}text-green-600 dark:text-green-400{% elif transaction.transaction_type == 'withdrawal' %}text-red-600 dark:text-red-400{% else %}text-yellow-600 dark:text-yellow-400{% endif %} font-semibold text-sm">
+                      {{ transaction.transaction_type|title }}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-400">{{ transaction.created_at|date:"d M, H:i A" }}</td>
+                  <td class="px-6 py-4 font-bold text-sm text-gray-900 dark:text-white">${{ transaction.amount }}</td>
+                  <td class="px-6 py-4">
+                    <span class="px-3 py-1 rounded-full text-xs font-semibold {% if transaction.status == 'pending' %}bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200{% elif transaction.status == 'approved' %}bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200{% else %}bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200{% endif %}">
+                      {{ transaction.status|title }}
+                    </span>
+                  </td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="6" class="px-6 py-8 text-center text-gray-500 dark:text-gray-400">No transactions found</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Tab -->
+    <div id="profile-tab" class="tab-content hidden fade-in">
+ <h3 style="display: block !important; width: 200px !important; margin: 20px auto !important; 
+             text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
+             font-weight: bold !important; color: white !important; 
+             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
+             border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
+             cursor: pointer !important; transition: all 0.3s !important;">
+    KYC
+  </h3>
+      <div class="max-w-3xl mx-auto">
+        <div class="crypto-card rounded-2xl p-6">
+          <form method="POST" enctype="multipart/form-data" action="{% url 'userprofile:profile-update' %}" class="space-y-6">
+            {% csrf_token %}
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input type="text" name="{{ profile_edit_form.first_name.name }}" value="{{ profile_edit_form.first_name.value|default:'' }}" class="custom-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="{{ profile_edit_form.last_name.name }}" value="{{ profile_edit_form.last_name.value|default:'' }}" class="custom-input">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Country</label>
+              <select name="country" class="custom-input">
+                {% for country in profile_edit_form.country.field.choices %}
+                  <option value="{{ country.0 }}" {% if country.0 == profile_edit_form.instance.country %}selected{% endif %}>{{ country.1 }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Address</label>
+              <textarea name="address" rows="3" class="custom-input">{{ profile_edit_form.address.value|default:'' }}</textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Government Issued ID</label>
+              {% if profile_edit_form.instance.govt_issued_id %}
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Current: <a href="{{ profile_edit_form.instance.govt_issued_id.url }}" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View</a></p>
+              {% endif %}
+              <input type="file" name="govt_issued_id" class="custom-input">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Trading Certificates</label>
+              {% if profile_edit_form.instance.trading_certificates %}
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Current: <a href="{{ profile_edit_form.instance.trading_certificates.url }}" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View</a></p>
+              {% endif %}
+              <input type="file" name="trading_certificates" class="custom-input">
+            </div>
+
+            <button type="submit" class="btn btn-success w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Save Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-5">
+        <button onclick="showTab('dashboard')" class="nav-item py-3 flex flex-col items-center justify-center transition-colors active" >
+          <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+          <span class="text-xs">Dashboard</span>
+        </button>
+        
+        <button onclick="showTab('deposit')" class="nav-item py-3 flex flex-col items-center justify-center transition-colors">
+          <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+          <span class="text-xs">Deposit</span>
+        </button>
+        
+        <a href="{% url 'home' %}" 
+   class="nav-item py-3 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105">
+  
+  <!-- Home Icon with background -->
+  <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-[#ee2021] to-[#ee2021] flex items-center justify-center shadow-lg" >
+    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 9.75L12 4l9 5.75V19a2 2 0 0 1-2 2h-4a1 1 0 0 1-1-1v-4H10v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V9.75z"/>
+    </svg>
+  </div>
+
+  <span class="text-xs text-white! mt-1 font-medium">Home</span>
+</a>
+
+        
+        <button onclick="showTab('transactions')" class="nav-item py-3 flex flex-col items-center justify-center transition-colors">
+          <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>
+          <span class="text-xs">Transactions</span>
+        </button>
+        
+        <button onclick="showTab('profile')" class="nav-item py-3 flex flex-col items-center justify-center transition-colors">
+          <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+          <span class="text-xs">Profile</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modals -->
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Success!</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6" id="success-message">Operation completed successfully.</p>
+          <button onclick="closeModal('success-modal')" class="btn btn-primary w-full">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div id="error-modal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-red-100 dark:bg-red-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Error!</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6" id="error-message">An error occurred. Please try again.</p>
+          <button onclick="closeModal('error-modal')" class="btn btn-primary w-full">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirm-modal" class="modal">
+    <div class="modal-content">
+      <div class="p-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2" id="confirm-title">Confirm Action</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6" id="confirm-message">Are you sure you want to proceed?</p>
+          <div class="flex space-x-3">
+            <button onclick="closeModal('confirm-modal')" class="btn btn-secondary flex-1">Cancel</button>
+            <button onclick="confirmAction()" class="btn btn-primary flex-1" id="confirm-action-btn">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Always force Tailwind dark mode
+  tailwind.config = {
+    darkMode: 'class',
+  }
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+
+  // FORCE DARK MODE — ALWAYS
+  function initTheme() {
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+    document.body.classList.remove('light');
+
+    // Lock theme permanently
+    localStorage.setItem('theme', 'dark');
+
+    // Show moon icon, hide sun icon
+    if (moonIcon) moonIcon.classList.remove('hidden');
+    if (sunIcon) sunIcon.classList.add('hidden');
+  }
+
+  // Apply forced dark mode
+  initTheme();
+
+  // Disable the toggle button so theme never switches
+  if (themeToggle) {
+    themeToggle.onclick = () => {};
+    themeToggle.style.pointerEvents = "none";   // can't click
+    themeToggle.style.opacity = "0.6";          // optional fade effect
+  }
+
+  // Disable system theme change listener (do nothing)
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  prefersDarkScheme.addEventListener('change', () => {
+    // Ignore system changes — remain dark
+    initTheme();
+  });
+
+    // Tab navigation
+    function showTab(tabName) {
+      // Hide all tabs
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => {
+        tab.classList.add('hidden');
+        tab.classList.remove('fade-in');
+      });
+      
+      // Show selected tab
+      const activeTab = document.getElementById(tabName + '-tab');
+      if (activeTab) {
+        activeTab.classList.remove('hidden');
+        setTimeout(() => {
+          activeTab.classList.add('fade-in');
+        }, 10);
+      }
+      
+      // Update bottom nav active state
+      const navItems = document.querySelectorAll('.nav-item');
+      navItems.forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Set active state based on tab
+      if (tabName === 'dashboard') {
+        navItems[0].classList.add('active');
+      } else if (tabName === 'deposit') {
+        navItems[1].classList.add('active');
+      } else if (tabName === 'withdrawal') {
+        navItems[2].classList.add('active');
+      } else if (tabName === 'transactions') {
+        navItems[3].classList.add('active');
+      } else if (tabName === 'profile') {
+        navItems[4].classList.add('active');
+      }
+    }
+
+    // Wallet selection handler
+    document.getElementById('id_selected_wallet')?.addEventListener('change', function() {
+      const selected = this.options[this.selectedIndex];
+      if (selected.value) {
+        document.getElementById('id_coinName').value = selected.getAttribute('data-name');
+        document.getElementById('id_wallet_address').value = selected.getAttribute('data-address');
+      } else {
+        document.getElementById('id_coinName').value = '';
+        document.getElementById('id_wallet_address').value = '';
+      }
+    });
+
+    // Copy to clipboard function
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showModal('success-modal', 'Address copied to clipboard!');
+      }).catch(err => {
+        showModal('error-modal', 'Failed to copy address. Please try again.');
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Modal functions
+    function showModal(modalId, message = '', title = '') {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        if (message) {
+          const messageElement = modal.querySelector('#success-message') || 
+                               modal.querySelector('#error-message') || 
+                               modal.querySelector('#confirm-message');
+          if (messageElement) messageElement.textContent = message;
+        }
+        
+        if (title) {
+          const titleElement = modal.querySelector('#confirm-title');
+          if (titleElement) titleElement.textContent = title;
+        }
+        
+        modal.style.display = 'block';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+
+    function showConfirmModal(message, title = 'Confirm Action', callback) {
+      const modal = document.getElementById('confirm-modal');
+      if (modal) {
+        const messageElement = modal.querySelector('#confirm-message');
+        const titleElement = modal.querySelector('#confirm-title');
+        
+        if (messageElement) messageElement.textContent = message;
+        if (titleElement) titleElement.textContent = title;
+        
+        // Store the callback
+        modal._callback = callback;
+        modal.style.display = 'block';
+      }
+    }
+
+    function confirmAction() {
+      const modal = document.getElementById('confirm-modal');
+      if (modal && modal._callback) {
+        modal._callback();
+      }
+      closeModal('confirm-modal');
+    }
+
+    // Modal event listeners
+    function setupModals() {
+      // Close modals when clicking outside
+      window.addEventListener('click', function(e) {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        });
+      });
+
+      // Close modals with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const modals = document.querySelectorAll('.modal');
+          modals.forEach(modal => {
+            modal.style.display = 'none';
+          });
+        }
+      });
+    }
+
+    // Initialize carousel auto-scroll for mobile
+    function initCarousel() {
+      const carousel = document.querySelector('.carousel-container');
+      if (carousel && window.innerWidth < 768) {
+        let scrollPosition = 0;
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        if (slides.length > 0) {
+          const slideWidth = slides[0].offsetWidth;
+          const totalSlides = slides.length;
+          
+          // Slowed down the carousel from 4 seconds to 6 seconds
+          setInterval(() => {
+            scrollPosition += slideWidth;
+            if (scrollPosition >= slideWidth * totalSlides) {
+              scrollPosition = 0;
+            }
+            carousel.scrollTo({
+              left: scrollPosition,
+              behavior: 'smooth'
+            });
+          }, 6000); // Changed from 4000 to 6000 for slower sliding
+        }
+      }
+    }
+
+    // Form validation and submission
+    function validateForm(form) {
+      const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+      let isValid = true;
+      
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          isValid = false;
+          input.classList.add('border-red-500');
+        } else {
+          input.classList.remove('border-red-500');
+        }
+      });
+      
+      return isValid;
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', function() {
+      initCarousel();
+      setupModals();
+      initChart();
+      showTab('dashboard');
+      
+      // Add form validation
+      const forms = document.querySelectorAll('form');
+      forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          if (!validateForm(this)) {
+            e.preventDefault();
+            showModal('error-modal', 'Please fill in all required fields.');
+          }
+        });
+      });
+    });
+
+    // Re-initialize carousel on resize
+    window.addEventListener('resize', initCarousel);
+
+    // Handle Django messages
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+          showModal('success-modal', '{{ message }}');
+        {% elif message.tags == 'error' %}
+          showModal('error-modal', '{{ message }}');
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </script>
+  <!-- 🌍 Auto Detect + Remember + Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    // Delay to ensure translate dropdown is injected
+    setTimeout(() => {
+      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+
+      // Try to load saved language from localStorage
+      let userLang = localStorage.getItem('userLang');
+
+      // If not saved, detect from browser
+      if (!userLang) {
+        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+        if (!supportedLangs.includes(userLang)) userLang = 'en';
+      }
+
+      // Automatically translate if not English
+      const select = document.querySelector('select.goog-te-combo');
+      if (select && userLang !== 'en') {
+        select.value = userLang;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Watch for manual language changes and save them
+      if (select) {
+        select.addEventListener('change', () => {
+          localStorage.setItem('userLang', select.value);
+        });
+      }
+    }, 1000);
+  }
+</script>
+
+<!-- Google Translate script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- 🌍 Auto Detect + Remember + Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    // Delay to ensure translate dropdown is injected
+    setTimeout(() => {
+      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+
+      // Try to load saved language from localStorage
+      let userLang = localStorage.getItem('userLang');
+
+      // If not saved, detect from browser
+      if (!userLang) {
+        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+        if (!supportedLangs.includes(userLang)) userLang = 'en';
+      }
+
+      // Automatically translate if not English
+      const select = document.querySelector('select.goog-te-combo');
+      if (select && userLang !== 'en') {
+        select.value = userLang;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Watch for manual language changes and save them
+      if (select) {
+        select.addEventListener('change', () => {
+          localStorage.setItem('userLang', select.value);
+        });
+      }
+    }, 1000);
+  }
+</script>
+
+<!-- Google Translate script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

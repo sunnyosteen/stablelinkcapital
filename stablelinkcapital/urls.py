@@ -7,9 +7,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),  # Include the seedview app's URLs
-    # path('userprofile/', include('userprofile.urls')),
-    # path('investment/', include('investment.urls')),  # Ensure 'investment.urls' is correct
-    # path('connectwallet/', include('connectwallet.urls')),
+    path('userprofile/', include('userprofile.urls')),
+    path('investment/', include('investment.urls')),  # Ensure 'investment.urls' is correct
+    path('connectwallet/', include('connectwallet.urls')),
 ]
 
 # Add this at the end to serve media files in development

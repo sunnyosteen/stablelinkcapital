@@ -1,0 +1,823 @@
+[ERROR] 2025-11-20 12:05:18,152 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:06:06,690 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:07:51,418 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:08:45,814 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:09:27,763 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:10:20,517 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:15:01,454 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:15:35,946 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:16:06,689 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:16:22,860 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:50:18,763 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to stablelink123@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[ERROR] 2025-11-20 12:56:07,722 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to stablelink1233@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[ERROR] 2025-11-20 13:07:39,900 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 13:07:39,960 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 13:15:03,280 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 13:15:03,290 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 13:15:16,532 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 13:15:16,544 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 13:15:24,150 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 13:15:24,168 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129553
+[ERROR] 2025-11-20 14:13:11,895 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 14:13:11,949 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 14:24:02,741 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 487, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-20 14:24:02,788 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90560
+[ERROR] 2025-11-20 14:24:10,692 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 14:24:10,720 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 14:26:52,498 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 14:26:52,735 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 14:28:15,977 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 14:28:16,003 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 14:29:12,881 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 256, in dashboard
+    return render(request, 'userprofile/dashboard.html', {
+        'user': user,
+    ...<7 lines>...
+        'profile_edit_form': profile_edit_form,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[ERROR] 2025-11-20 14:29:13,091 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 192449
+[ERROR] 2025-11-20 14:30:14,379 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 256, in dashboard
+    return render(request, 'userprofile/dashboard.html', {
+        'user': user,
+    ...<7 lines>...
+        'profile_edit_form': profile_edit_form,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader_tags.py", line 228, in do_block
+    raise TemplateSyntaxError(
+        "'%s' tag with name '%s' appears more than once" % (bits[0], block_name)
+    )
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'title' appears more than once
+[ERROR] 2025-11-20 14:30:14,424 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 192449
+[ERROR] 2025-11-20 15:40:07,071 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 15:40:07,120 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129416
+[ERROR] 2025-11-20 16:14:30,464 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to staffaulty@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[ERROR] 2025-11-20 16:20:42,683 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 286, in dashboard
+    my_referrals = profile.get_my_referrals()
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\models.py", line 43, in get_my_referrals
+    return User.objects.filter(userprofile__referred_by=self.user)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1495, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1513, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1523, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1563, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1372, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1349, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "stablelinkcapital": Must be "UserProfile" instance.
+[ERROR] 2025-11-20 16:20:42,701 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 124187
+[ERROR] 2025-11-20 16:20:50,082 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 286, in dashboard
+    my_referrals = profile.get_my_referrals()
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\models.py", line 43, in get_my_referrals
+    return User.objects.filter(userprofile__referred_by=self.user)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1495, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1513, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\query.py", line 1523, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ~~~~~~~~~~~~~~~~~^
+        child,
+        ^^^^^^
+    ...<7 lines>...
+        update_join_types=update_join_types,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1563, in build_filter
+    self.check_related_objects(join_info.final_field, value, join_info.opts)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1372, in check_related_objects
+    self.check_query_object_type(value, opts, field)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\db\models\sql\query.py", line 1349, in check_query_object_type
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Cannot query "stablelinkcapital": Must be "UserProfile" instance.
+[ERROR] 2025-11-20 16:20:50,101 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 124187
+[ERROR] 2025-11-20 16:24:45,249 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 287, in dashboard
+    referral_usernames = [ref.username for ref in my_referrals]
+                          ^^^^^^^^^^^^
+AttributeError: 'UserProfile' object has no attribute 'username'
+[ERROR] 2025-11-20 16:24:45,279 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 74487
+[ERROR] 2025-11-20 16:24:49,451 django.request:253 - Internal Server Error: /userprofile/dashboard/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 287, in dashboard
+    referral_usernames = [ref.username for ref in my_referrals]
+                          ^^^^^^^^^^^^
+AttributeError: 'UserProfile' object has no attribute 'username'
+[ERROR] 2025-11-20 16:24:49,455 django.server:213 - "GET /userprofile/dashboard/ HTTP/1.1" 500 74487
+[ERROR] 2025-11-20 16:42:33,692 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 16:42:33,923 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 16:42:34,043 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-20 16:42:34,051 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129436

@@ -1,0 +1,950 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Stablelinkcapital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* FIXED THEME */
+        body {
+            background-color: #05071e;
+            color: #e8e7f7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            background-color: #05071e;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 450px;
+            margin-top: 110px;
+        }
+
+        /* CARD */
+        .register-card {
+            background-color: #131428;
+            border-radius: 12px;
+            padding: 30px 25px;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* REGISTER ICON + TITLE */
+        .register-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .register-header i {
+            font-size: 60px;
+            color: #6a67e0;
+            margin-bottom: 10px;
+        }
+
+        .register-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .register-header p {
+            color: #c8c6e3;
+            font-size: 0.9rem;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(135deg, #524dd3, #6a67e0);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            width: 50%;
+        }
+
+        .step-indicators {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .step-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .step-circle.active {
+            background-color: #524dd3;
+            color: white;
+        }
+
+        .step-circle.inactive {
+            background-color: rgba(255,255,255,0.1);
+            color: #c8c6e3;
+        }
+
+        .step-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #c8c6e3;
+        }
+
+        .step-label.active {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background-color: rgba(255,255,255,0.05);
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        /* Style for select dropdown */
+        select.form-control {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23c8c6e3' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            padding-right: 35px;
+        }
+
+        /* Style for select dropdown options */
+        select.form-control option {
+            background-color: #131428;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        /* Style for select dropdown when focused */
+        select.form-control:focus {
+            outline: none;
+            border-color: #524dd3;
+            box-shadow: 0 0 0 3px rgba(82, 77, 211, 0.3);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236a67e0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #524dd3;
+            box-shadow: 0 0 0 3px rgba(82, 77, 211, 0.3);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #c8c6e3;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .terms-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .terms-container input {
+            margin-top: 3px;
+        }
+
+        .terms-container label {
+            font-size: 0.85rem;
+            color: #c8c6e3;
+            line-height: 1.4;
+        }
+
+        .terms-container a {
+            color: #6a67e0;
+            text-decoration: none;
+        }
+
+        .terms-container a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-prev {
+            background-color: rgba(255,255,255,0.1);
+            color: #c8c6e3;
+        }
+
+        .btn-prev:hover {
+            background-color: rgba(255,255,255,0.2);
+            color: #ffffff;
+        }
+
+        .btn-next, .btn-submit {
+            background: linear-gradient(135deg, #524dd3, #6a67e0);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-next::before, .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(82, 77, 211, 0.4);
+        }
+
+        .btn-next:hover::before, .btn-submit:hover::before {
+            left: 100%;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #c8c6e3;
+        }
+
+        .login-link a {
+            color: #6a67e0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            color: #c8c6e3;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
+        }
+
+        /* Google Translate Styles */
+        #custom_translate_wrapper {
+            position: relative;
+        }
+
+        #custom_lang_icon {
+            font-size: 1.2rem;
+            color: #6a67e0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        #custom_lang_icon:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.2);
+            color: #ffffff;
+        }
+
+        #custom_google_translate {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: #131428;
+            border-radius: 6px;
+            padding: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(255,255,255,0.1);
+            min-width: 150px;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Step Header Styles */
+        .step-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .step-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background: rgba(82, 77, 211, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step-icon i {
+            font-size: 1.5rem;
+            color: #6a67e0;
+            transition: all 0.3s ease;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .step-subtitle {
+            font-size: 0.85rem;
+            color: #c8c6e3;
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #05071e 15%, #000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .preloader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .preloader-icon {
+            font-size: 60px;
+            color: #6a67e0;
+            animation: linePulse 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #6a67e0);
+        }
+
+        .preloader-text {
+            color: #6a67e0;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #6a67e0, 0 0 20px #524dd3;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes linePulse {
+            0% { transform: scale(1) translateY(0); opacity: 0.9; }
+            50% { transform: scale(1.15) translateY(-4px); opacity: 1; }
+            100% { transform: scale(1) translateY(0); opacity: 0.9; }
+        }
+
+        @keyframes glowText {
+            0% { opacity: 0.7; text-shadow: 0 0 10px #6a67e0; }
+            100% { opacity: 1; text-shadow: 0 0 25px #524dd3; }
+        }
+
+        body.loaded #preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .header-controls {
+                gap: 10px;
+            }
+            
+            .register-container {
+                margin-top: 100px;
+            }
+            
+            .register-card {
+                padding: 25px 20px;
+            }
+            
+            .register-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+            
+            .btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            #custom_lang_icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .step-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .step-icon i {
+                font-size: 1.3rem;
+            }
+
+            .step-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .step-indicators {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .step-indicator {
+                flex: 1;
+                min-width: 80px;
+            }
+            
+            .header-controls {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <i class="fa fa-line-chart preloader-icon" aria-hidden="true"></i>
+            <h2 class="preloader-text">Stablelinkcapital</h2>
+        </div>
+    </div>
+
+    <!-- Header with Logo -->
+    <header class="header">
+        <div class="logo-container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Stablelinkcapital Logo" style="height:60px; max-width:100%; object-fit:contain;">
+            </a>
+        </div>
+
+        <!-- Google Translate Widget - Centered in nav -->
+        <div class="header-controls">
+            <div id="custom_translate_wrapper">
+                <div id="custom_lang_icon" onclick="toggleCustomTranslate()">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div id="custom_google_translate"></div>
+            </div>
+
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="register-container">
+        <div class="register-card">
+            <div class="register-header">
+                <i class="fas fa-user-plus"></i>
+                <h1>Create Account</h1>
+                <p>Join Stablelinkcapital to start your investment journey</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar"></div>
+                </div>
+                <div class="step-indicators">
+                    <div class="step-indicator">
+                        <div class="step-circle active" id="step-1-indicator"><i class="fas fa-user"></i></div>
+                        <div class="step-label active">Profile</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-circle inactive" id="step-2-indicator"> <i class="fas fa-lock"></i></div>
+                        <div class="step-label">Security</div>
+                    </div>
+                </div>
+            </div>
+
+            <form method="POST" action="{% url 'userprofile:register' %}" id="registration-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="a" value="signup">
+                <input type="hidden" name="action" value="signup">
+
+                {% if user_form.non_field_errors %}
+                    <div class="error-message">
+                        {% for error in user_form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Step 1: Profile Information -->
+                <div id="step-1" class="step-content active">
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="step-title">Profile Information</h3>
+                        <p class="step-subtitle">Tell us about yourself</p>
+                    </div>
+
+                    <div style="space-y: 12px;">
+                        <!-- Username -->
+                        <div class="form-group">
+                            <label for="{{ user_form.username.id_for_label }}">Username *</label>
+                            {{ user_form.username|add_class:"form-control"|attr:"placeholder:Enter your username" }}
+                            {% if user_form.username.errors %}
+                                <span class="error-message">{{ user_form.username.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="{{ user_form.email.id_for_label }}">Email *</label>
+                            {{ user_form.email|add_class:"form-control"|attr:"placeholder:Enter your email" }}
+                            {% if user_form.email.errors %}
+                                <span class="error-message">{{ user_form.email.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label for="{{ profile_form.phone_number.id_for_label }}">Phone Number</label>
+                            {{ profile_form.phone_number|add_class:"form-control"|attr:"placeholder:Enter your phone number" }}
+                            {% if profile_form.phone_number.errors %}
+                                <span class="error-message">{{ profile_form.phone_number.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Country -->
+                        <div class="form-group">
+                            <label for="{{ profile_form.country.id_for_label }}">Country</label>
+                            <select class="form-control" id="{{ profile_form.country.id_for_label }}" name="{{ profile_form.country.html_name }}">
+                                {% for option in profile_form.country.field.choices %}
+                                    <option value="{{ option.0 }}" {% if option.0 == profile_form.country.value %}selected{% endif %}>
+                                        {{ option.1 }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            {% if profile_form.country.errors %}
+                                <span class="error-message">{{ profile_form.country.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Security Information -->
+                <div id="step-2" class="step-content">
+                    <div class="step-header">
+                        <div class="step-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="step-title">Security Setup</h3>
+                        <p class="step-subtitle">Secure your account</p>
+                    </div>
+
+                    <div style="space-y: 12px;">
+                        <!-- Referral Code -->
+                        <div class="form-group">
+                            <label for="{{ profile_form.referral_bonus.id_for_label }}">Referral Code</label>
+                            {{ profile_form.referral_bonus|add_class:"form-control"|attr:"readonly:true placeholder:Referral code from link" }}
+                            {% if profile_form.referral_bonus.errors %}
+                                <span class="error-message">{{ profile_form.referral_bonus.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="{{ user_form.password1.id_for_label }}">Password *</label>
+                            <div class="password-container">
+                                {{ user_form.password1|add_class:"form-control"|attr:"placeholder:Create a strong password"|attr:"id:id_password1" }}
+                                <button type="button" class="toggle-password" data-target="id_password1">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            {% if user_form.password1.errors %}
+                                <span class="error-message">{{ user_form.password1.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="{{ user_form.password2.id_for_label }}">Confirm Password *</label>
+                            <div class="password-container">
+                                {{ user_form.password2|add_class:"form-control"|attr:"placeholder:Confirm your password"|attr:"id:id_password2" }}
+                                <button type="button" class="toggle-password" data-target="id_password2">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            {% if user_form.password2.errors %}
+                                <span class="error-message">{{ user_form.password2.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Terms -->
+                        <div class="terms-container">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">
+                                I agree to the 
+                                <a href="#">Terms of Service</a> 
+                                and 
+                                <a href="#">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <button type="button" id="prev-btn" class="btn btn-prev" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" id="next-btn" class="btn btn-next">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" id="submit-btn" class="btn btn-submit" style="display: none;">
+                        Create Account
+                    </button>
+                </div>
+            </form>
+
+            <div class="login-link">
+                Already have <b>Wallet? </b><a href="{% url 'userprofile:login' %}">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.body.classList.add("loaded");
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', function() {
+            // For now, just toggle the icon since we have fixed theme
+            if (themeIcon.classList.contains('fa-moon')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Multi-step form functionality
+        let currentStep = 1;
+        const totalSteps = 2;
+
+        function showStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step-${step}`).classList.add('active');
+            
+            // Update progress bar
+            const progress = (step / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            
+            // Update step indicators
+            for (let i = 1; i <= totalSteps; i++) {
+                const indicator = document.getElementById(`step-${i}-indicator`);
+                const label = indicator.nextElementSibling;
+                
+                if (i <= step) {
+                    indicator.classList.remove('inactive');
+                    indicator.classList.add('active');
+                    label.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                    indicator.classList.add('inactive');
+                    label.classList.remove('active');
+                }
+            }
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').style.display = step === 1 ? 'none' : 'block';
+            document.getElementById('next-btn').style.display = step === totalSteps ? 'none' : 'block';
+            document.getElementById('submit-btn').style.display = step === totalSteps ? 'block' : 'none';
+        }
+
+        // Navigation button events
+        document.getElementById('next-btn').addEventListener('click', function() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', function() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        });
+
+        // Password toggle functionality
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+
+        // Google Translate Functions
+        function toggleCustomTranslate() {
+            const el = document.getElementById("custom_google_translate");
+            if (el.style.display === "block") {
+                el.style.opacity = 0;
+                setTimeout(() => el.style.display = "none", 300);
+            } else {
+                el.style.display = "block";
+                setTimeout(() => el.style.opacity = 1, 10);
+            }
+        }
+
+        function customGoogleTranslateInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,fr,de,it,pt,ru,zh-CN,ja,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'custom_google_translate');
+            
+            // Close translate dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const translateWrapper = document.getElementById('custom_translate_wrapper');
+                const translateDropdown = document.getElementById('custom_google_translate');
+                
+                if (!translateWrapper.contains(event.target) && translateDropdown.style.display === 'block') {
+                    translateDropdown.style.opacity = 0;
+                    setTimeout(() => translateDropdown.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            const password = document.getElementById('id_password1').value;
+            const confirmPassword = document.getElementById('id_password2').value;
+            
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (!document.getElementById('terms').checked) {
+                e.preventDefault();
+                alert('Please agree to the Terms of Service and Privacy Policy');
+                return;
+            }
+        });
+
+        // Initialize the form
+        showStep(currentStep);
+
+        // Additional styling for select dropdown options
+        document.addEventListener('DOMContentLoaded', function() {
+            const countrySelect = document.getElementById('{{ profile_form.country.id_for_label }}');
+            if (countrySelect) {
+                // Add custom styling for options
+                const options = countrySelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    options[i].style.backgroundColor = '#131428';
+                    options[i].style.color = '#ffffff';
+                    options[i].style.padding = '10px';
+                }
+            }
+        });
+    </script>
+
+    <!-- Google Translate Script -->
+    <script src="//translate.google.com/translate_a/element.js?cb=customGoogleTranslateInit"></script>
+</body>
+</html>

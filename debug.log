@@ -1,0 +1,109 @@
+[INFO] 2025-11-20 11:57:33,379 userprofile.views:300 - User 'sunny' logged in successfully.
+[INFO] 2025-11-20 12:04:37,787 userprofile.views:300 - User 'sunny' logged in successfully.
+[ERROR] 2025-11-20 12:05:18,152 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:06:06,690 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:07:51,418 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:08:45,814 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:09:27,763 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:10:20,517 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:15:01,454 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:15:35,946 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:16:06,689 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[ERROR] 2025-11-20 12:16:22,860 userprofile.views:313 - Form errors: <ul class="errorlist"><li>__all__<ul class="errorlist nonfield"><li>Please enter a correct username and password. Note that both fields may be case-sensitive.</li></ul></li></ul>
+[WARNING] 2025-11-20 12:42:46,927 userprofile.views:204 - [FORM ERROR] User form: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>A user with that username already exists.</li></ul></li></ul> | Profile form: 
+[WARNING] 2025-11-20 12:49:11,707 userprofile.views:204 - [FORM ERROR] User form: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>A user with that username already exists.</li></ul></li></ul> | Profile form: 
+[WARNING] 2025-11-20 12:49:35,060 userprofile.views:204 - [FORM ERROR] User form: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>A user with that username already exists.</li></ul></li></ul> | Profile form: 
+[INFO] 2025-11-20 12:50:13,919 userprofile.views:158 - [REGISTER] New user registered: stablelink123@gmail.com
+[ERROR] 2025-11-20 12:50:18,763 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to stablelink123@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[WARNING] 2025-11-20 12:55:30,356 userprofile.views:204 - [FORM ERROR] User form: <ul class="errorlist"><li>username<ul class="errorlist" id="id_username_error"><li>A user with that username already exists.</li></ul></li></ul> | Profile form: 
+[INFO] 2025-11-20 12:55:56,309 userprofile.views:158 - [REGISTER] New user registered: stablelink1233@gmail.com
+[ERROR] 2025-11-20 12:56:07,722 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to stablelink1233@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[INFO] 2025-11-20 13:07:22,200 userprofile.views:300 - User 'stablelinkcapital' logged in successfully.
+[DEBUG] 2025-11-20 13:07:37,490 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 13:07:37,491 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 13:15:03,170 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 13:15:03,171 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 13:15:16,421 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 13:15:16,425 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 13:15:24,037 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 13:15:24,037 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 14:13:11,203 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 14:13:11,351 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 14:24:10,397 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 14:24:10,398 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 14:26:51,208 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 14:26:51,556 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 14:28:15,755 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 14:28:15,756 connectwallet.views:74 - GET request received.
+[INFO] 2025-11-20 14:53:28,594 userprofile.views:300 - User 'sunny' logged in successfully.
+[INFO] 2025-11-20 14:56:46,047 userprofile.views:300 - User 'sunny' logged in successfully.
+[DEBUG] 2025-11-20 15:40:06,651 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 15:40:06,654 connectwallet.views:74 - GET request received.
+[INFO] 2025-11-20 16:14:25,951 userprofile.views:158 - [REGISTER] New user registered: staffaulty@gmail.com
+[ERROR] 2025-11-20 16:14:30,464 userprofile.views:194 - [EMAIL ERROR] Failed sending welcome email to staffaulty@gmail.com: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 189, in register
+    msg.send(fail_silently=False)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\message.py", line 307, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 136, in send_messages
+    sent = self._send(message)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\mail\backends\smtp.py", line 155, in _send
+    self.connection.sendmail(
+    ~~~~~~~~~~~~~~~~~~~~~~~~^
+        from_email, recipients, message.as_bytes(linesep="\r\n")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Python314\Lib\smtplib.py", line 888, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[INFO] 2025-11-20 16:15:12,373 userprofile.views:300 - User 'stablelinkcapital' logged in successfully.
+[INFO] 2025-11-20 16:28:51,599 userprofile.views:357 - User 'stablelinkcapital' logged in successfully.
+[INFO] 2025-11-20 16:29:16,097 userprofile.views:357 - User 'stablelinkcapital' logged in successfully.
+[DEBUG] 2025-11-20 16:42:33,370 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 16:42:33,371 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 16:42:33,695 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 16:42:33,696 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-20 16:42:33,790 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
+[DEBUG] 2025-11-20 16:42:33,852 connectwallet.views:74 - GET request received.
