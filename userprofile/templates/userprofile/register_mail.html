@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Welcome to StableLinkCapital</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #060821;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #dce3f1;
+      line-height: 1.6;
+    }
+
+    .email-wrapper {
+      max-width: 620px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 45px rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #524dd3 0%, #705df5 40%, #3b34a3 100%);
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .header img {
+      width: 160px;
+      filter: brightness(0) invert(1);
+    }
+
+    /* CONTENT */
+    .content {
+      padding: 40px 35px;
+      text-align: left;
+      color: #1e2448;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #1a202c, #4c51bf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .username {
+      color: #524dd3;
+      font-weight: 700;
+    }
+
+    .intro-box {
+      background: #f4f2ff;
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid #524dd3;
+      margin: 25px 0;
+      color: #393e5a;
+    }
+
+    /* FEATURES BLOCK */
+    .features {
+      margin-top: 35px;
+    }
+
+    .feature-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 22px;
+    }
+
+    .feature-icon {
+      font-size: 26px;
+      margin-right: 12px;
+      color: #524dd3;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: #1a2038;
+    }
+
+    .feature-text {
+      font-size: 13px;
+      color: #4a516d;
+    }
+
+    /* BUTTON */
+    .button-container {
+      text-align: center;
+      margin: 35px 0;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+      padding: 15px 38px;
+      border-radius: 10px;
+      color: #ffffff !important;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 5px 25px rgba(105,89,237,0.35);
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(105, 89, 237, 0.55);
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #101225;
+      color: #9aa2c5;
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #c7bbff;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .email-wrapper {
+        margin: 20px;
+      }
+      .content {
+        padding: 30px 20px;
+      }
+      .feature-row {
+        flex-direction: row;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="email-wrapper">
+
+    <!-- HEADER -->
+    <div class="header">
+      <img src="{% static 'assets/images/logo4.png' %}" alt="StableLinkCapital Logo">
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <h2>Welcome to StableLinkCapital</h2>
+
+      <p>Hello <span class="username">{{ username }}</span>,</p>
+
+      <p>
+        We're excited to welcome you to **StableLinkCapital**—a modern investment platform built to help you grow, protect, and manage your wealth with total confidence.
+      </p>
+
+      <div class="intro-box">
+        <strong>Your account is now fully activated and ready to use.</strong><br>
+        You’re just a step away from unlocking smart tools designed for long-term financial success.
+      </div>
+
+      <!-- FEATURE SET -->
+      <div class="features">
+        
+        <div class="feature-row">
+          <div class="feature-icon">🚀</div>
+          <div>
+            <div class="feature-title">Premium Investment Opportunities</div>
+            <div class="feature-text">Access expertly managed plans optimized for sustainable growth.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">📊</div>
+          <div>
+            <div class="feature-title">Live Portfolio Intelligence</div>
+            <div class="feature-text">Track real-time performance, insights, and financial analytics.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">🔐</div>
+          <div>
+            <div class="feature-title">Advanced Security Framework</div>
+            <div class="feature-text">Your account is protected by multi-layer encryption and monitoring.</div>
+          </div>
+        </div>
+
+        <div class="feature-row">
+          <div class="feature-icon">💼</div>
+          <div>
+            <div class="feature-title">Dedicated Support Advisors</div>
+            <div class="feature-text">Get tailored support from our expert service team anytime.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BUTTON -->
+      <div class="button-container">
+        <a href="https://stablelinkcapital.com/userprofile/dashboard/" class="button">Access Your Dashboard</a>
+      </div>
+
+      <p>
+        If you need assistance at any point, our support team is always ready to help.  
+        Welcome to a smarter way to invest.
+      </p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>&copy; 2025 StableLinkCapital. All rights reserved.</p>
+      <p>
+        <a href="https://stablelinkcapital.com">Website</a> |
+        <a href="mailto:support@stablelinkcapital.com">Support</a> |
+        <a href="https://stablelinkcapital.com/privacy">Privacy Policy</a>
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>

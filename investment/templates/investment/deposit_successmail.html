@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deposit Approved</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f5f7fb;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 14px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 5px 28px rgba(0, 0, 0, 0.07);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .header img {
+      max-width: 165px;
+      filter: brightness(0) invert(1);
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #111827;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .info-box {
+      background: #f0fdf4;
+      border-left: 5px solid #22c55e;
+      padding: 22px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+  .button {
+  display: inline-block;
+  background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+  color: #ffffff;
+  padding: 15px 38px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 25px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+
+    .footer {
+      background: #111827;
+      padding: 25px;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    
+    <div class="header">
+      <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="Stablelinkcapital Logo" />
+    </div>
+
+    <div class="content">
+      <h2>Deposit Approved 🎉</h2>
+
+      <p>Hello <strong>{{ username }}</strong>,</p>
+
+      <p>Your deposit has been <strong style="color:#15803d;">successfully approved</strong> and added to your account.</p>
+
+      <div class="info-box">
+        <p><strong>Approved Deposit Details</strong></p>
+        <p>💰 Amount Approved: <strong>${{ amount }}</strong></p>
+        <p>📝 Transaction ID: <strong>{{ transaction_id }}</strong></p>
+        <p>📌 Status: <strong style="color:#15803d;">Approved</strong></p>
+        <p>📅 Date Approved: <strong>{{ approval_date }}</strong></p>
+      </div>
+
+      <p>Your updated balance is now available for investment.</p>
+
+      <div style="text-align:center;">
+        <a href="https://www.eversteadinvest.com/userprofile/dashboard/" class="button">
+          Go to Dashboard
+        </a>
+      </div>
+
+      <p>If you did not authorize this deposit, please contact support immediately.</p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; {{ now|date:"Y" }} Stablelinkcapital. All rights reserved.</p>
+      <p>This is an automated message — please do not reply.</p>
+    </div>
+
+  </div>
+</body>
+</html>

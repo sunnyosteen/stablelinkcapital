@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Confirmation</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #060821;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #d6d9ff;
+        }
+
+        .container-custom {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #0b0f2d;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.07);
+            box-shadow: 0 0 25px rgba(0,0,0,0.55);
+        }
+
+        h2 {
+            font-weight: 700;
+            color: #78ffdf;
+        }
+
+        .wallet-box, .qr-box {
+            background: rgba(255,255,255,0.04);
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        input {
+            background: #13183d !important;
+            border: 1px solid rgba(255,255,255,0.15) !important;
+            color: #ffffff !important;
+        }
+
+        /* Global Button Gradient (stablelinkcapital standard) */
+        .btn-gradient {
+            background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%) !important;
+            border: none !important;
+            color: #fff !important;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 10px;
+            transition: 0.25s ease;
+        }
+        .btn-gradient:hover {
+            opacity: 0.9;
+        }
+
+        /* Copy Button */
+        .copy_btn {
+            background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%) !important;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+
+        /* Countdown */
+        #countdown-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffbdbd;
+        }
+
+        footer {
+            text-align: center;
+            color: #9299ff;
+            margin-top: 25px;
+            padding: 15px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- TradingView Crypto Ticker (Dark) -->
+<div class="tradingview-widget-container">
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+{
+  "symbols": [
+    {"proName": "BITSTAMP:BTCUSD", "title": "Bitcoin"},
+    {"proName": "BITSTAMP:ETHUSD", "title": "Ethereum"},
+    {"proName": "BINANCE:DOGEUSD", "title": "Dogecoin"}
+  ],
+  "showSymbolLogo": true,
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+</script>
+</div>
+
+<br>
+
+<div class="container container-custom">
+
+    <div class="text-center mb-4">
+        <i class="fas fa-circle-check"
+           style="font-size:70px;color:#1ebc65;filter:drop-shadow(0 0 8px rgba(30,188,101,0.5));"></i>
+
+        <h2 class="mt-3">
+            <i class="bi bi-wallet"></i> Deposit Initiated
+        </h2>
+
+        <p class="lead mt-2">
+            Hello <b>{{ user_name|capfirst }}</b>, your deposit of  
+            <span style="color:#1ebc65;"><b>${{ deposit_amount }}</b></span>  
+            is awaiting completion.
+        </p>
+
+        <p class="text-muted">Please send the exact amount to the wallet address below.</p>
+
+        <p class="mt-3">
+            ⏳ <b>Expires in: <span id="countdown-text">01:00:00</span></b>
+        </p>
+    </div>
+
+    <!-- Wallet Address Section -->
+    <div class="wallet-box mt-4">
+        <h4>Wallet Address</h4>
+        <div class="input-group mt-2">
+            <input type="text" id="walletAddress" value="{{ wallet_address }}" class="form-control" readonly>
+            <button class="copy_btn" onclick="copyWalletAddress()">
+                <i class="fas fa-copy"></i>
+            </button>
+        </div>
+        <small class="text-muted">Click copy to avoid mistakes.</small>
+    </div>
+
+    <!-- Wallet Name -->
+    <div class="wallet-box mt-4 text-center">
+        <h4>Wallet Network</h4>
+        <p class="lead mt-2">{{ wallet_name }}</p>
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-box mt-4 text-center">
+        <h4>Scan to Pay</h4>
+        <img src="{{ wallet.icon.url }}" class="img-fluid mt-3"
+             style="width:210px;height:210px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);">
+        <p class="text-muted mt-2">Scan using your crypto wallet to complete payment instantly.</p>
+    </div>
+
+    <!-- Return Button -->
+    <div class="text-center mt-4">
+        <a href="{% url 'userprofile:dashboard' %}" class="btn-gradient">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    <p>&copy; {{ year }} Stablelinkcapital. All rights reserved.</p>
+</footer>
+
+<script>
+    function copyWalletAddress() {
+        const walletAddress = document.getElementById("walletAddress");
+        walletAddress.select();
+        walletAddress.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(walletAddress.value);
+        alert("Wallet address copied: " + walletAddress.value);
+    }
+</script>
+
+<!-- Countdown Timer -->
+<script>
+    let totalTime = 3600;
+    function formatTime(seconds) {
+        const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        return `${h}:${m}:${s}`;
+    }
+    function updateCountdown() {
+        if (totalTime <= 0) return;
+        totalTime--;
+        document.getElementById('countdown-text').textContent = formatTime(totalTime);
+    }
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>

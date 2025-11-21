@@ -1,0 +1,364 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Transactions | {{ user.username|capfirst }}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* StableLinkCapital — Dark brand theme */
+        :root{
+            --bg: #060821;               /* page background */
+            --card: #0d1125;             /* card background */
+            --card-border: #1a1f35;      /* card border */
+            --text: #ffffff;             /* main text */
+            --muted: #c7c9d1;            /* muted text */
+            --brand-green: #1ebc65;      /* primary brand color (success) */
+            --brand-accent: #6959ed;     /* accent purple */
+            --primary-gradient: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+            --table-header-gradient: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+            --shadow-lg: 0 10px 30px rgba(2,6,23,0.6);
+            --transition: all 0.22s ease;
+            --radius: 12px;
+        }
+
+        /* Reset + base */
+        *{box-sizing:border-box;margin:0;padding:0}
+        html,body{height:100%}
+        body{
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.45;
+        }
+
+        a{color:inherit;text-decoration:none}
+
+        /* Preloader */
+        #preloader{
+            position:fixed;inset:0;
+            display:flex;align-items:center;justify-content:center;
+            background: radial-gradient(circle at center, rgba(6,8,33,0.9) 10%, rgba(2,6,23,0.98) 100%);
+            z-index:9999;transition:opacity .45s ease,visibility .45s ease;
+        }
+        .preloader-content{display:flex;flex-direction:column;align-items:center;gap:12px}
+        .preloader-icon{font-size:56px;color:var(--brand-green);filter:drop-shadow(0 0 8px rgba(30,188,101,0.25));animation:prePulse 1.6s ease-in-out infinite}
+        .preloader-text{color:var(--brand-green);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+        @keyframes prePulse{
+            0%{transform:scale(1);opacity:1}
+            50%{transform:scale(1.08);opacity:.95}
+            100%{transform:scale(1);opacity:1}
+        }
+
+        /* Header */
+        .header{
+            position:fixed;top:0;left:0;right:0;height:74px;
+            display:flex;align-items:center;justify-content:space-between;
+            padding:14px 22px;z-index:60;
+            background: linear-gradient(180deg, rgba(13,17,37,0.6), rgba(13,17,37,0.35));
+            backdrop-filter: blur(6px);
+            border-bottom:1px solid rgba(255,255,255,0.03);
+            box-shadow: 0 6px 20px rgba(2,6,23,0.6);
+        }
+
+        .logo-container{display:flex;align-items:center;gap:12px}
+        .logo-container img{height:48px; width:auto; display:block}
+        .brand-title{font-weight:700;color:var(--muted);letter-spacing:.6px}
+
+        .header-actions{display:flex;align-items:center;gap:14px}
+
+        /* Search */
+        .search-container{position:relative}
+        .search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.45)}
+        .search-input{
+            padding:10px 14px 10px 40px;
+            border-radius:10px;
+            border:1px solid rgba(255,255,255,0.04);
+            background: rgba(255,255,255,0.02);
+            color:var(--text);
+            width:260px;
+            transition:var(--transition);
+            font-size:0.95rem;
+        }
+        .search-input:focus{outline:none;box-shadow:0 6px 20px rgba(30,188,101,0.06);border-color:rgba(30,188,101,0.12)}
+
+        /* Dashboard button */
+        .btn-dashboard{
+            padding:9px 16px;border-radius:10px;font-weight:700;
+            background:var(--primary-gradient);color:#fff;border:none;cursor:pointer;
+            box-shadow: 0 8px 30px rgba(105,89,237,0.12);
+            transition:var(--transition);
+        }
+        .btn-dashboard:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(30,188,101,0.14)}
+
+        /* Main layout */
+        main.main-content{
+            max-width:1200px;margin:110px auto 80px;padding:22px;
+        }
+
+        .transactions-card{
+            background:var(--card);border:1px solid var(--card-border);
+            border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-lg);
+            transition:var(--transition);
+        }
+
+        .page-title{font-size:20px;font-weight:800;color:var(--brand-green);margin-bottom:6px}
+        .section-title{color:var(--muted);font-weight:600;margin-bottom:18px}
+
+        /* Table container */
+        .table-container{
+            width:100%;overflow:auto;border-radius:10px;
+            border:1px solid rgba(255,255,255,0.03);
+            background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+        }
+
+        table.transactions-table{
+            width:100%;border-collapse:collapse;min-width:820px;
+        }
+
+        table.transactions-table thead{
+            background: var(--table-header-gradient); color:#fff;
+            border-top-left-radius:10px;border-top-right-radius:10px;
+        }
+
+        table.transactions-table th{
+            padding:14px 18px;text-align:left;font-size:12px;font-weight:700;
+            letter-spacing:0.6px;color:#fff;text-transform:uppercase;
+        }
+
+        table.transactions-table tbody tr{
+            border-bottom:1px solid rgba(255,255,255,0.02);
+            transition: background .18s ease, transform .18s ease;
+        }
+
+        table.transactions-table tbody tr:hover{
+            background: linear-gradient(90deg, rgba(30,188,101,0.03), rgba(105,89,237,0.02));
+            transform: translateY(-1px);
+        }
+
+        table.transactions-table td{
+            padding:14px 18px;font-size:14px;color:var(--muted);
+            vertical-align:middle;
+        }
+
+        /* Amount styling */
+        .amount {font-weight:700;color:#fff}
+
+        /* Status badges */
+        .status-badge{
+            display:inline-block;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;
+            text-transform:uppercase;letter-spacing:0.6px;
+        }
+        .status-completed{background:rgba(30,188,101,0.12);color:var(--brand-green)}
+        .status-pending{background:rgba(255,193,7,0.08);color:#fbbf24}
+        .status-approved{background:rgba(105,89,237,0.12);color:var(--brand-accent)}
+        .status-failed{background:rgba(239,68,68,0.08);color:#ff6b6b}
+
+        /* Small helper */
+        .muted { color:var(--muted); font-size:13px }
+
+        /* Print button area */
+        .print-section{margin-top:18px;text-align:center}
+        .btn-print{
+            padding:11px 20px;border-radius:10px;background:var(--primary-gradient);
+            color:#fff;border:none;font-weight:700;cursor:pointer;
+            box-shadow:0 12px 40px rgba(30,188,101,0.08);
+        }
+        .btn-print i{margin-right:8px}
+
+        /* Scroll to top */
+        .scroll-top{
+            position:fixed;right:18px;bottom:18px;width:52px;height:52px;border-radius:50%;
+            background:var(--primary-gradient);color:#fff;border:none;cursor:pointer;
+            box-shadow:0 12px 36px rgba(2,6,23,0.7);display:flex;align-items:center;justify-content:center;font-size:16px;
+            z-index:90;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px){
+            .search-input{width:200px}
+            table.transactions-table{min-width:720px}
+            main.main-content{padding:16px;margin-top:100px}
+        }
+        @media (max-width: 680px){
+            .search-input{display:none}
+            .logo-container img{height:40px}
+            table.transactions-table{min-width:600px;font-size:13px}
+            .page-title{font-size:18px}
+        }
+        @media (max-width:420px){
+            .btn-dashboard{padding:8px 12px;font-size:13px}
+            table.transactions-table thead th{padding:10px}
+            table.transactions-table td{padding:10px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <i class="fa fa-line-chart preloader-icon" aria-hidden="true"></i>
+            <div class="preloader-text">StableLinkCapital</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="logo-container">
+            <a href="{% url 'home' %}" class="brand-link" aria-label="StableLinkCapital home">
+                <img src="{% static 'assets/images/logo4.png' %}" alt="StableLinkCapital">
+            </a>
+            <div class="brand-title">StableLinkCapital</div>
+        </div>
+
+        <div class="header-actions">
+            <div class="search-container" role="search" aria-label="Search transactions">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                <input class="search-input" type="text" placeholder="Search transactions..." />
+            </div>
+
+            <!-- Dashboard button -->
+            <a class="btn-dashboard" href="{% url 'userprofile:dashboard' %}">Dashboard</a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main-content" role="main">
+        <div class="transactions-card" role="region" aria-labelledby="transactions-heading">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+                <div>
+                    <div id="transactions-heading" class="page-title">Transactions</div>
+                    <div class="section-title">Recent Transactions</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                    <!-- keep print button visible -->
+                    <div class="muted" style="font-weight:600;font-size:.95rem">Showing latest records</div>
+                </div>
+            </div>
+
+            <div class="table-container" role="table" aria-label="Transactions table">
+                <table class="transactions-table" aria-describedby="transactions-heading">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td><span class="muted">#{{ transaction.id }}</span></td>
+                            <td>{{ transaction.description }}</td>
+                            <td class="muted capitalize">{{ transaction.transaction_type }}</td>
+                            <td class="muted">{{ transaction.created_at|date:"d M, H:i A" }}</td>
+                            <td class="amount">${{ transaction.amount }}</td>
+                            <td>
+                                {% if transaction.status == 'completed' %}
+                                    <span class="status-badge status-completed">Completed</span>
+                                {% elif transaction.status == 'pending' %}
+                                    <span class="status-badge status-pending">Pending</span>
+                                {% elif transaction.status == 'approved' %}
+                                    <span class="status-badge status-approved">Approved</span>
+                                {% else %}
+                                    <span class="status-badge status-failed">Failed</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" style="text-align:center;padding:32px;color:var(--muted)">
+                                No transactions found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Print button -->
+            <div class="print-section">
+                <button onclick="window.print()" class="btn-print" aria-label="Print transactions to PDF">
+                    <i class="fas fa-file-pdf"></i> Print to PDF
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" title="Back to top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Google Translate (kept) -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script>
+        // PRELOADER — hide when page loaded
+        window.addEventListener('load', function () {
+            const pre = document.getElementById('preloader');
+            if (!pre) return;
+            setTimeout(() => {
+                pre.style.opacity = '0';
+                pre.style.visibility = 'hidden';
+                pre.style.pointerEvents = 'none';
+            }, 600);
+        });
+
+        // SEARCH — client-side filter (non-destructive)
+        (function(){
+            const input = document.querySelector('.search-input');
+            if (!input) return;
+            input.addEventListener('input', function (e) {
+                const q = e.target.value.trim().toLowerCase();
+                const rows = document.querySelectorAll('.transactions-table tbody tr');
+                rows.forEach(row => {
+                    // skip the "no transactions" row
+                    if (!row.querySelector('td')) return;
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = (q === '' || text.indexOf(q) !== -1) ? '' : 'none';
+                });
+            });
+        })();
+
+        // GOOGLE TRANSLATE — kept, auto-detect saved language
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+
+            setTimeout(() => {
+                const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+                let userLang = localStorage.getItem('userLang');
+                if (!userLang) {
+                    userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+                    if (!supportedLangs.includes(userLang)) userLang = 'en';
+                }
+                const select = document.querySelector('select.goog-te-combo');
+                if (select && userLang !== 'en') {
+                    select.value = userLang;
+                    select.dispatchEvent(new Event('change'));
+                }
+                if (select) {
+                    select.addEventListener('change', () => {
+                        localStorage.setItem('userLang', select.value);
+                    });
+                }
+            }, 800);
+        }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

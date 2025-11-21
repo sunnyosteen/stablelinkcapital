@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit Rejected</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #060821;
+      margin: 0;
+      padding: 0;
+      color: #d9e2ff;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #0b0f2d;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.45);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+      padding: 35px 0;
+      text-align: center;
+    }
+
+    .header img {
+      max-width: 160px;
+      filter: brightness(0) invert(1);
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #b8c3ff;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .info-box {
+      background: rgba(255, 0, 0, 0.08);
+      border-left: 4px solid #ff4b4b;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    .info-box p {
+      color: #ffb8b8;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+      color: #ffffff;
+      padding: 15px 38px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    }
+
+    .footer {
+      background: #04061a;
+      padding: 25px;
+      text-align: center;
+      color: #6e7aff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="Stablelinkcapital Logo">
+    </div>
+
+    <div class="content">
+
+      <h2>Deposit Rejected ❌</h2>
+
+      <p>Hello <strong>{{ username }}</strong>,</p>
+
+      <p>
+        Unfortunately, your recent deposit could not be approved.  
+        Please review the details below:
+      </p>
+
+      <div class="info-box">
+        <p><strong>Deposit Details</strong></p>
+        <p>💰 Amount: <strong>${{ amount }}</strong></p>
+        <p>📝 Transaction ID: <strong>{{ transaction_id }}</strong></p>
+        <p>📅 Attempted Date: <strong>{{ approval_date }}</strong></p>
+      </div>
+
+      <p>
+        Common reasons may include invalid proof of payment, unverifiable transaction, or insufficient confirmation time.
+      </p>
+
+      <p>
+        If you believe this decision was made in error, please contact our support team for further assistance.
+      </p>
+
+      <div style="text-align:center;">
+        <a href="https://www.stablelinkcapital.com/userprofile/dashboard/" class="button">
+          Return to Dashboard
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>&copy; Stablelinkcapital. All rights reserved.</p>
+      <p>This is an automated message — please do not reply.</p>
+    </div>
+
+  </div>
+</body>
+</html>

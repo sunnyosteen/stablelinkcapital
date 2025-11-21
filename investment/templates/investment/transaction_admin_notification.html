@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Transaction Notification</title>
+
+  <style>
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background: #0a0d1a; 
+      margin: 0; 
+      padding: 20px;
+    }
+
+    .container { 
+      max-width: 650px; 
+      margin: 40px auto; 
+      background: #101427; 
+      border-radius: 14px; 
+      border: 1px solid rgba(255,255,255,0.08); 
+      overflow: hidden; 
+      box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    }
+
+    /* BRAND HEADER COLOR */
+    .header { 
+      background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%); 
+      padding: 30px 0; 
+      text-align: center; 
+    }
+
+    .header img { 
+      max-width: 150px; 
+      filter: brightness(0) invert(1);
+    }
+
+    h2 { 
+      text-align: center; 
+      color: #e5e7f4; 
+      margin: 25px 0; 
+      font-size: 22px; 
+      font-weight: 600; 
+    }
+
+    .content { 
+      padding: 35px; 
+      color: #cbd5e0; 
+    }
+
+    p { 
+      font-size: 16px; 
+      color: #cbd5e0; 
+      line-height: 1.7; 
+      margin-bottom: 13px; 
+    }
+
+    /* INFO BOX */
+    .info-box { 
+      background: rgba(255,255,255,0.05); 
+      border-left: 4px solid #1ebc65; 
+      padding: 20px; 
+      border-radius: 10px; 
+      margin-top: 18px; 
+    }
+
+    .footer { 
+      background: #0d111f; 
+      padding: 22px; 
+      text-align: center; 
+      color: #7f8ca8; 
+      font-size: 14px; 
+      border-top: 1px solid rgba(255,255,255,0.08); 
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="header">
+    <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="StablelinkCapital Logo">
+  </div>
+
+  <div class="content">
+
+    <h2>New Transaction Update ⚡</h2>
+
+    <p>A transaction's status has been updated. Below are the latest details:</p>
+
+    <div class="info-box">
+      <p><strong>User:</strong> {{ transaction.user.username }}</p>
+      <p><strong>Transaction Type:</strong> {{ transaction.transaction_type }}</p>
+      <p><strong>Amount:</strong> ${{ transaction.amount }}</p>
+      <p><strong>Status:</strong> {{ transaction.status|title }}</p>
+      <p><strong>Transaction ID:</strong> {{ transaction.id }}</p>
+      <p><strong>Date:</strong> {{ approval_date }}</p>
+    </div>
+
+    <p class="mt-3">Log in to the admin dashboard for full transaction insights.</p>
+
+  </div>
+
+  <div class="footer">
+    <p>StablelinkCapital Admin Notification</p>
+  </div>
+
+</div>
+</body>
+</html>

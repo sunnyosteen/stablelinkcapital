@@ -441,59 +441,6 @@
             color: #c8c6e3;
         }
 
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(circle at center, #05071e 15%, #000 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .preloader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .preloader-icon {
-            font-size: 60px;
-            color: #6a67e0;
-            animation: linePulse 1.8s ease-in-out infinite;
-            filter: drop-shadow(0 0 8px #6a67e0);
-        }
-
-        .preloader-text {
-            color: #6a67e0;
-            font-family: "Poppins", sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px #6a67e0, 0 0 20px #524dd3;
-            animation: glowText 2s infinite alternate;
-        }
-
-        @keyframes linePulse {
-            0% { transform: scale(1) translateY(0); opacity: 0.9; }
-            50% { transform: scale(1.15) translateY(-4px); opacity: 1; }
-            100% { transform: scale(1) translateY(0); opacity: 0.9; }
-        }
-
-        @keyframes glowText {
-            0% { opacity: 0.7; text-shadow: 0 0 10px #6a67e0; }
-            100% { opacity: 1; text-shadow: 0 0 25px #524dd3; }
-        }
-
-        body.loaded #preloader {
-            opacity: 0;
-            visibility: hidden;
-        }
-
         /* Responsive Design */
         @media (max-width: 480px) {
             body {
@@ -576,15 +523,62 @@
             }
         }
     </style>
+
+    <style>
+        /* Fullscreen Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #060821; /* Professional dark blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    transition: opacity 0.6s ease;
+}
+
+/* Gradient Spinner */
+.loader-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #1ebc65;   /* green */
+    border-right-color: #6959ed; /* purple */
+    border-bottom-color: #1ebc65;
+    border-left-color: #6959ed;
+    animation: spin 1s linear infinite;
+}
+
+/* Gradient Text */
+.loader-text {
+    margin-top: 22px;
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.5px;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+    </style>
 </head>
 <body>
     <!-- Preloader -->
     <div id="preloader">
-        <div class="preloader-content">
-            <i class="fa fa-line-chart preloader-icon" aria-hidden="true"></i>
-            <h2 class="preloader-text">Stablelinkcapital</h2>
-        </div>
-    </div>
+    <div class="loader-circle"></div>
+    <h2 class="loader-text">StablelinkCapital</h2>
+</div>
 
     <!-- Header with Logo -->
     <header class="header">
@@ -943,6 +937,15 @@
             }
         });
     </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        document.getElementById("preloader").style.display = "none";
+    }, 1200); 
+});
+</script>
+
 
     <!-- Google Translate Script -->
     <script src="//translate.google.com/translate_a/element.js?cb=customGoogleTranslateInit"></script>

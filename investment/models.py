@@ -73,7 +73,7 @@ class Transaction(models.Model):
             "amount": self.amount,
             "transaction_id": self.id,
             "approval_date": timezone.now().strftime("%Y-%m-%d %H:%M"),
-            "dashboard_url": "https://www.eversteadinvest.com/userprofile/dashboard/",
+            "dashboard_url": "https://www.stablelinkcapital.com/userprofile/dashboard/",
         }
 
         if extra_context:
@@ -259,7 +259,7 @@ class WithdrawalRequest(models.Model):
             send_mail(
                 subject="Withdrawal Approved",
                 message=f"Your withdrawal of ${self.amount} has been approved.",
-                from_email="support@eversteadinvest.com",
+                from_email="support@stablelinkcapital.com",
                 recipient_list=[self.user_profile.user.email],
             )
 

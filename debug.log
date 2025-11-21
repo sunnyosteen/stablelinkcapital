@@ -107,3 +107,107 @@ smtplib.SMTPSenderRefused: (530, b'5.5.1 Authentication Required.', 'support@hos
 [DEBUG] 2025-11-20 16:42:33,696 connectwallet.views:74 - GET request received.
 [DEBUG] 2025-11-20 16:42:33,790 connectwallet.views:21 - User stablelinkcapital has 0 connected wallets.
 [DEBUG] 2025-11-20 16:42:33,852 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 10:45:25,837 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 10:45:25,878 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:12:48,042 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:12:48,044 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:14:08,556 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:14:08,589 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:14:30,444 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:14:30,446 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:20:13,723 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:20:13,724 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:20:20,659 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:20:20,662 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:20:43,859 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:20:43,860 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:20:46,383 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:20:46,384 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:21:07,247 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:21:07,248 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:24:01,205 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:24:01,209 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:24:24,342 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:24:24,342 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:25:46,497 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:25:46,498 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:25:51,876 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:25:51,882 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:26:10,365 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:26:10,371 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:26:23,762 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:26:23,762 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:27:52,280 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:27:52,282 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:28:19,587 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:28:19,601 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:45:32,412 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:45:32,413 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:45:47,072 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:45:47,073 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:46:27,114 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:46:27,114 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:46:46,884 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:46:46,891 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:47:33,533 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:47:33,541 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:48:02,276 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:48:02,279 connectwallet.views:74 - GET request received.
+[DEBUG] 2025-11-21 11:49:26,337 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 11:49:26,338 connectwallet.views:74 - GET request received.
+[INFO] 2025-11-21 13:27:53,744 userprofile.views:357 - User 'sunny' logged in successfully.
+[DEBUG] 2025-11-21 13:30:12,975 PIL.Image:388 - Importing AvifImagePlugin
+[DEBUG] 2025-11-21 13:30:13,405 PIL.Image:388 - Importing BlpImagePlugin
+[DEBUG] 2025-11-21 13:30:13,429 PIL.Image:388 - Importing BmpImagePlugin
+[DEBUG] 2025-11-21 13:30:13,430 PIL.Image:388 - Importing BufrStubImagePlugin
+[DEBUG] 2025-11-21 13:30:13,480 PIL.Image:388 - Importing CurImagePlugin
+[DEBUG] 2025-11-21 13:30:13,502 PIL.Image:388 - Importing DcxImagePlugin
+[DEBUG] 2025-11-21 13:30:13,522 PIL.Image:388 - Importing DdsImagePlugin
+[DEBUG] 2025-11-21 13:30:13,560 PIL.Image:388 - Importing EpsImagePlugin
+[DEBUG] 2025-11-21 13:30:13,588 PIL.Image:388 - Importing FitsImagePlugin
+[DEBUG] 2025-11-21 13:30:13,611 PIL.Image:388 - Importing FliImagePlugin
+[DEBUG] 2025-11-21 13:30:13,644 PIL.Image:388 - Importing FpxImagePlugin
+[DEBUG] 2025-11-21 13:30:13,677 PIL.Image:391 - Image: failed to import FpxImagePlugin: No module named 'olefile'
+[DEBUG] 2025-11-21 13:30:13,680 PIL.Image:388 - Importing FtexImagePlugin
+[DEBUG] 2025-11-21 13:30:13,687 PIL.Image:388 - Importing GbrImagePlugin
+[DEBUG] 2025-11-21 13:30:13,691 PIL.Image:388 - Importing GifImagePlugin
+[DEBUG] 2025-11-21 13:30:13,693 PIL.Image:388 - Importing GribStubImagePlugin
+[DEBUG] 2025-11-21 13:30:13,713 PIL.Image:388 - Importing Hdf5StubImagePlugin
+[DEBUG] 2025-11-21 13:30:13,716 PIL.Image:388 - Importing IcnsImagePlugin
+[DEBUG] 2025-11-21 13:30:13,776 PIL.Image:388 - Importing IcoImagePlugin
+[DEBUG] 2025-11-21 13:30:13,804 PIL.Image:388 - Importing ImImagePlugin
+[DEBUG] 2025-11-21 13:30:13,837 PIL.Image:388 - Importing ImtImagePlugin
+[DEBUG] 2025-11-21 13:30:13,869 PIL.Image:388 - Importing IptcImagePlugin
+[DEBUG] 2025-11-21 13:30:13,883 PIL.Image:388 - Importing JpegImagePlugin
+[DEBUG] 2025-11-21 13:30:13,883 PIL.Image:388 - Importing Jpeg2KImagePlugin
+[DEBUG] 2025-11-21 13:30:13,883 PIL.Image:388 - Importing McIdasImagePlugin
+[DEBUG] 2025-11-21 13:30:13,906 PIL.Image:388 - Importing MicImagePlugin
+[DEBUG] 2025-11-21 13:30:13,915 PIL.Image:391 - Image: failed to import MicImagePlugin: No module named 'olefile'
+[DEBUG] 2025-11-21 13:30:13,916 PIL.Image:388 - Importing MpegImagePlugin
+[DEBUG] 2025-11-21 13:30:13,940 PIL.Image:388 - Importing MpoImagePlugin
+[DEBUG] 2025-11-21 13:30:13,964 PIL.Image:388 - Importing MspImagePlugin
+[DEBUG] 2025-11-21 13:30:13,966 PIL.Image:388 - Importing PalmImagePlugin
+[DEBUG] 2025-11-21 13:30:14,047 PIL.Image:388 - Importing PcdImagePlugin
+[DEBUG] 2025-11-21 13:30:14,054 PIL.Image:388 - Importing PcxImagePlugin
+[DEBUG] 2025-11-21 13:30:14,055 PIL.Image:388 - Importing PdfImagePlugin
+[DEBUG] 2025-11-21 13:30:14,116 PIL.Image:388 - Importing PixarImagePlugin
+[DEBUG] 2025-11-21 13:30:14,118 PIL.Image:388 - Importing PngImagePlugin
+[DEBUG] 2025-11-21 13:30:14,119 PIL.Image:388 - Importing PpmImagePlugin
+[DEBUG] 2025-11-21 13:30:14,119 PIL.Image:388 - Importing PsdImagePlugin
+[DEBUG] 2025-11-21 13:30:14,164 PIL.Image:388 - Importing QoiImagePlugin
+[DEBUG] 2025-11-21 13:30:14,176 PIL.Image:388 - Importing SgiImagePlugin
+[DEBUG] 2025-11-21 13:30:14,179 PIL.Image:388 - Importing SpiderImagePlugin
+[DEBUG] 2025-11-21 13:30:14,184 PIL.Image:388 - Importing SunImagePlugin
+[DEBUG] 2025-11-21 13:30:14,190 PIL.Image:388 - Importing TgaImagePlugin
+[DEBUG] 2025-11-21 13:30:14,202 PIL.Image:388 - Importing TiffImagePlugin
+[DEBUG] 2025-11-21 13:30:14,202 PIL.Image:388 - Importing WebPImagePlugin
+[DEBUG] 2025-11-21 13:30:14,334 PIL.Image:388 - Importing WmfImagePlugin
+[DEBUG] 2025-11-21 13:30:14,347 PIL.Image:388 - Importing XbmImagePlugin
+[DEBUG] 2025-11-21 13:30:14,359 PIL.Image:388 - Importing XpmImagePlugin
+[DEBUG] 2025-11-21 13:30:14,369 PIL.Image:388 - Importing XVThumbImagePlugin
+[ERROR] 2025-11-21 13:30:55,370 investment.views:542 - Error occurred while processing the deposit: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[DEBUG] 2025-11-21 13:52:49,180 connectwallet.views:21 - User sunny has 0 connected wallets.
+[DEBUG] 2025-11-21 13:52:49,182 connectwallet.views:74 - GET request received.
+[ERROR] 2025-11-21 13:55:30,148 investment.views:153 - Email sending failed: name 'EmailMultiAlternatives' is not defined
+[ERROR] 2025-11-21 13:55:30,159 investment.views:180 - Admin email sending failed: [Errno 11001] getaddrinfo failed
+[INFO] 2025-11-21 14:34:27,302 userprofile.views:357 - User 'sunny' logged in successfully.

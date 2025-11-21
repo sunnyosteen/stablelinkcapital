@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Notification - Stablelinkcapital</title>
+
+  <style>
+    body { 
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+      background: linear-gradient(135deg, #0a0d1a 0%, #060821 100%); 
+      margin: 0; 
+      padding: 20px; 
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d7d9e5;
+    }
+
+    .container { 
+      max-width: 650px; 
+      background: #0d1124; 
+      border-radius: 14px; 
+      overflow: hidden; 
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header { 
+      background: linear-gradient(135deg, #524dd3 0%, #705df5 40%, #3b34a3 100%); 
+      padding: 35px 0; 
+      text-align: center; 
+      position: relative;
+      border-bottom: 4px solid #d4af37;
+    }
+
+    .brand-logo {
+      max-width: 200px;
+      filter: brightness(0) invert(1);
+    }
+
+    h2 { 
+      margin-top: 25px; 
+      color: #ffffff; 
+      text-align: center; 
+      font-size: 28px; 
+      font-weight: 700; 
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #b4b7c9;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .content { padding: 40px; }
+
+    p { 
+      font-size: 16px; 
+      color: #c9cbda; 
+      line-height: 1.6; 
+      margin-bottom: 18px; 
+    }
+
+    .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #38d79f;
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .transaction-box { 
+      background: #12172d;
+      border-left: 4px solid #524dd3;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .transaction-box h3 {
+      color: #ffffff;
+      margin-top: 0;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    .transaction-detail {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .detail-label { color: #9aa0b8; }
+    .detail-value { color: #ffffff; font-weight: 600; }
+
+    .reference-number {
+      background: #524dd3;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 600;
+      margin: 15px 0;
+      font-size: 15px;
+    }
+
+    .button { 
+      display: inline-block; 
+      background: linear-gradient(135deg, #524dd3, #3b34a3); 
+      color: #ffffff; 
+      padding: 14px 35px; 
+      border-radius: 8px; 
+      font-size: 16px; 
+      font-weight: 600; 
+      text-decoration: none; 
+      margin: 25px auto; 
+      text-align: center; 
+      transition: .3s;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px rgba(82,77,211,0.4);
+    }
+
+    .security-notice {
+      background: #2a1f04;
+      border: 1px solid #b8860b;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 20px 0;
+      color: #f5d483;
+      font-size: 14px;
+    }
+
+    .footer { 
+      background: #0a0d1a; 
+      padding: 25px; 
+      text-align: center; 
+      color: #7a7f97; 
+      font-size: 14px; 
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media (max-width: 600px) {
+      .content { padding: 25px 20px; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="Stablelinkcapital Logo" class="brand-logo">
+    </div>
+
+    <div class="content">
+      <h2>Transaction Notification</h2>
+      <p class="subtitle">Deposit Successfully Processed</p>
+
+      <p>Dear <strong>{{ username }}</strong>,</p>
+
+      <p>Your deposit has been <strong style="color: #38d79f;">successfully processed</strong> and the funds have been credited to your Stablelinkcapital account.</p>
+
+      <div class="amount">${{ amount }}</div>
+
+      <div class="transaction-box">
+        <h3>Transaction Details</h3>
+
+        <div class="transaction-detail">
+          <span class="detail-label">Account Holder:</span>
+          <span class="detail-value">{{ username }}</span>
+        </div>
+
+        <div class="transaction-detail">
+          <span class="detail-label">Transaction Type:</span>
+          <span class="detail-value">Deposit</span>
+        </div>
+
+        <div class="transaction-detail">
+          <span class="detail-label">Transaction ID:</span>
+          <span class="detail-value">{{ transaction_id }}</span>
+        </div>
+
+        <div class="transaction-detail">
+          <span class="detail-label">Date Processed:</span>
+          <span class="detail-value">{{ approval_date }}</span>
+        </div>
+
+        <div class="transaction-detail">
+          <span class="detail-label">Status:</span>
+          <span class="detail-value" style="color:#38d79f;">Completed</span>
+        </div>
+      </div>
+
+      <div class="reference-number">
+        Reference: SLC{{ transaction_id }}
+      </div>
+
+      <div style="text-align:center;">
+        <a href="https://www.stablelinkcapital.com" class="button">View Account Dashboard</a>
+      </div>
+
+      <div class="security-notice">
+        <strong>Security Notice:</strong>  
+        If you did not authorize this transaction, please contact Stablelinkcapital support immediately.
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>Stablelinkcapital — Global Wealth & Digital Asset Management</p>
+      <p>This is an automated message. Please do not reply.</p>
+      <p>&copy; {{ now|date:"Y" }} Stablelinkcapital. All rights reserved.</p>
+    </div>
+
+  </div>
+</body>
+</html>

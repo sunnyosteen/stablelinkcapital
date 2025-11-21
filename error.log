@@ -821,3 +821,532 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
 [ERROR] 2025-11-20 16:42:34,051 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129436
+[ERROR] 2025-11-21 10:45:26,882 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-21 10:45:26,937 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129404
+[ERROR] 2025-11-21 11:12:48,286 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-21 11:12:48,361 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129404
+[ERROR] 2025-11-21 11:14:08,952 django.request:253 - Internal Server Error: /connectwallet/select-wallet/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\connectwallet\views.py", line 77, in select_wallet
+    return render(request, 'connectwallet/connect_wallet.html', {
+        'form': form,
+        'wallets': wallets,
+        'connected_wallets': connected_wallets,
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'about' not found. 'about' is not a valid view function or pattern name.
+[ERROR] 2025-11-21 11:14:08,972 django.server:213 - "GET /connectwallet/select-wallet/ HTTP/1.1" 500 129571
+[ERROR] 2025-11-21 12:24:27,925 django.request:253 - Internal Server Error: /userprofile/reset-password/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 422, in reset_password
+    return render(request, "userprofile/reset_password.html", {"form": form})
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/reset_password.html
+[ERROR] 2025-11-21 12:24:27,948 django.server:213 - "GET /userprofile/reset-password/ HTTP/1.1" 500 85621
+[ERROR] 2025-11-21 12:24:52,141 django.request:253 - Internal Server Error: /userprofile/reset-password/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 422, in reset_password
+    return render(request, "userprofile/reset_password.html", {"form": form})
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/reset_password.html
+[ERROR] 2025-11-21 12:24:52,148 django.server:213 - "GET /userprofile/reset-password/ HTTP/1.1" 500 85758
+[ERROR] 2025-11-21 12:26:27,710 django.request:253 - Internal Server Error: /userprofile/reset-password/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 422, in reset_password
+    return render(request, "userprofile/reset_password.html", {"form": form})
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/reset_password.html
+[ERROR] 2025-11-21 12:26:27,720 django.server:213 - "GET /userprofile/reset-password/ HTTP/1.1" 500 85758
+[ERROR] 2025-11-21 12:26:36,988 django.request:253 - Internal Server Error: /userprofile/reset-password/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 422, in reset_password
+    return render(request, "userprofile/reset_password.html", {"form": form})
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/reset_password.html
+[ERROR] 2025-11-21 12:26:36,997 django.server:213 - "GET /userprofile/reset-password/ HTTP/1.1" 500 85758
+[ERROR] 2025-11-21 13:30:55,370 investment.views:542 - Error occurred while processing the deposit: (530, b'5.5.1 Authentication Required.', 'support@host.com')
+[ERROR] 2025-11-21 13:33:59,339 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:33:59,362 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90653
+[ERROR] 2025-11-21 13:34:30,243 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:34:30,248 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:35:13,294 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:35:13,301 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:37:11,236 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:37:11,244 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:37:12,211 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:37:12,218 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:38:35,545 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:38:35,561 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:39:44,473 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:39:44,479 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:43:20,941 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:43:20,950 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:43:46,272 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:43:46,285 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:47:40,193 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:47:40,200 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90653
+[ERROR] 2025-11-21 13:48:38,161 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:48:38,170 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:49:38,864 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:49:38,872 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:49:39,806 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:49:39,818 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:50:07,855 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofiles/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofiles/transaction_statement.html
+[ERROR] 2025-11-21 13:50:07,867 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90812
+[ERROR] 2025-11-21 13:51:03,943 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:51:03,958 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:51:04,261 django.request:253 - Internal Server Error: /userprofile/transactions/
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\USER\Desktop\stablelinkcapital\userprofile\views.py", line 544, in transaction_statement
+    return render(request, 'userprofile/transaction_statement.html', {
+        'user': user,
+        'transactions': transactions  # Pass the transactions to the template
+    })
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\USER\Desktop\stablelinkcapital\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: userprofile/transaction_statement.html
+[ERROR] 2025-11-21 13:51:04,286 django.server:213 - "GET /userprofile/transactions/ HTTP/1.1" 500 90790
+[ERROR] 2025-11-21 13:55:30,148 investment.views:153 - Email sending failed: name 'EmailMultiAlternatives' is not defined
+[ERROR] 2025-11-21 13:55:30,159 investment.views:180 - Admin email sending failed: [Errno 11001] getaddrinfo failed

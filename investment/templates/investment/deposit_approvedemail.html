@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit Approved - Stablelinkcapital</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #060821;
+      margin: 0;
+      padding: 20px;
+      color: #d7d9e5;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #0d1124;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #524dd3 0%, #705df5 40%, #3b34a3 100%);
+      padding: 35px 0;
+      text-align: center;
+      border-bottom: 4px solid #d4af37;
+    }
+
+    .header img {
+      max-width: 170px;
+      filter: brightness(0) invert(1);
+    }
+
+    h2 {
+      margin-top: 25px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #b6b9c9;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .info-box {
+      background: #12172d;
+      border-left: 4px solid #38d79f;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .info-box p strong {
+      color: #ffffff;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #524dd3, #3b34a3);
+      color: #ffffff;
+      padding: 15px 40px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0 5px 18px rgba(82,77,211,0.4);
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background: #0a0d1a;
+      padding: 25px;
+      text-align: center;
+      color: #7a7f97;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="header">
+      <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="Stablelinkcapital Logo">
+    </div>
+
+    <div class="content">
+
+      <h2>Deposit Approved ✅</h2>
+
+      <p>Hello <strong>{{ username }}</strong>,</p>
+
+      <p>
+        Great news! Your deposit has been 
+        <strong style="color:#38d79f;">successfully approved</strong> 
+        and added to your Stablelinkcapital account balance.
+      </p>
+
+      <div class="info-box">
+        <p><strong>Deposit Details</strong></p>
+        <p>💰 Amount Approved: <strong>${{ amount }}</strong></p>
+        <p>📝 Transaction ID: <strong>{{ transaction_id }}</strong></p>
+        <p>📌 Status: <strong style="color:#38d79f;">Approved</strong></p>
+        <p>📅 Date Approved: <strong>{{ approval_date }}</strong></p>
+      </div>
+
+      <p>
+        Your updated balance is now available for trading and investment.
+        Thank you for choosing Stablelinkcapital — where your wealth grows securely.
+      </p>
+
+      <div style="text-align:center;">
+        <a href="https://www.stablelinkcapital.com/userprofile/dashboard/" class="button">
+          Go to Dashboard
+        </a>
+      </div>
+
+      <p>
+        If you did not authorize this deposit, please contact our support team immediately.
+      </p>
+
+    </div>
+
+    <div class="footer">
+      <p>&copy; Stablelinkcapital. All rights reserved.</p>
+      <p>This is an automated message, please do not reply.</p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal Successful</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      margin: 0;
+      padding: 20px;
+      color: #e2e8f0;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border-radius: 24px;
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #00d4aa, #00b4db, #0095ff, #00d4aa);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #0095ff 0%, #00b4db 50%, #00d4aa 100%);
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    .logo-container {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    .header img {
+      max-width: 200px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .content {
+      padding: 50px 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .success-icon {
+      font-size: 80px;
+      margin-bottom: 25px;
+      background: linear-gradient(135deg, #00d4aa 0%, #00b4db 50%, #0095ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 5px 15px rgba(0, 212, 170, 0.3));
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h2 {
+      color: #ffffff;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #00d4aa 0%, #00b4db 50%, #0095ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .username {
+      color: #00d4aa;
+      font-weight: 600;
+      font-size: 1.1em;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      color: #cbd5e1;
+    }
+
+    .transaction-card {
+      background: linear-gradient(135deg, rgba(0, 212, 170, 0.1) 0%, rgba(0, 180, 219, 0.1) 100%);
+      border: 1px solid rgba(0, 212, 170, 0.3);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: left;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .transaction-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(135deg, #00d4aa, #00b4db);
+    }
+
+    .transaction-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .transaction-item:last-child {
+      border-bottom: none;
+    }
+
+    .transaction-label {
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .transaction-value {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .amount {
+      color: #00d4aa;
+      font-size: 1.2em;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #00d4aa, #00b4db);
+      color: #0f172a;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 14px;
+      margin: 10px 0;
+      box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      padding: 40px 30px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: #00b4db;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer a:hover {
+      color: #00d4aa;
+      transform: translateY(-2px);
+    }
+
+    .security-note {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+      font-size: 13px;
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .processing-info {
+      background: rgba(255, 193, 7, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      color: #ffd54f;
+    }
+
+    @media only screen and (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        margin: 10px;
+        border-radius: 20px;
+      }
+
+      .content {
+        padding: 40px 25px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .success-icon {
+        font-size: 65px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .transaction-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo-container">
+        <img src="https://i.ibb.co/dLLKK5C/logo-white.png" alt="stablelinkcapital logo">
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+
+      <h2>Withdrawal Request Submitted</h2>
+
+      <div class="status-badge">
+        <i class="fas fa-clock me-2"></i>Pending Approval
+      </div>
+
+      <p>Hello <span class="username">{{ username }}</span>,</p>
+
+      <p>
+        Your withdrawal request has been <strong>successfully submitted</strong> and is now pending approval by our finance team.
+      </p>
+
+      <div class="transaction-card">
+        <div class="transaction-item">
+          <span class="transaction-label">Amount:</span>
+          <span class="transaction-value amount">${{ amount }}</span>
+        </div>
+        <div class="transaction-item">
+          <span class="transaction-label">Wallet Address:</span>
+          <span class="transaction-value">{{ wallet_address }}</span>
+        </div>
+        <div class="transaction-item">
+          <span class="transaction-label">Date Submitted:</span>
+          <span class="transaction-value">{{ payment_date }}</span>
+        </div>
+        <div class="transaction-item">
+          <span class="transaction-label">Transaction ID:</span>
+          <span class="transaction-value">#{{ transaction_id }}</span>
+        </div>
+      </div>
+
+      <div class="processing-info">
+        <i class="fas fa-info-circle me-2"></i>
+        <strong>Processing Time:</strong> Withdrawals are typically processed within 2-6 business hours.
+      </div>
+
+      <p>
+        You will receive another notification once your withdrawal has been reviewed and processed.
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; {{ year }} stablelinkcapital . All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="https://stablelinkcapital .com">
+          <i class="fas fa-globe"></i>Visit Website
+        </a>
+        <a href="mailto:support@stablelinkcapital .com">
+          <i class="fas fa-envelope"></i>Support
+        </a>
+        <a href="https://stablelinkcapital .com/contact">
+          <i class="fas fa-headset"></i>Contact Us
+        </a>
+      </div>
+
+      <div class="security-note">
+        <i class="fas fa-shield-alt me-2"></i>
+        This email contains confidential information intended only for the recipient.
+        Please do not forward or share this content.
+      </div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</body>
+</html>

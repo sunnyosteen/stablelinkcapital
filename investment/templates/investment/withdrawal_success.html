@@ -1,0 +1,353 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Successful</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* New Color Scheme */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+            --primary-color: #0083b0;
+            --primary-light: #00b4db;
+            --success-color: #00a86b;
+            --accent-color: #ff6b6b;
+            --dark-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: var(--text-primary);
+        }
+
+        .tradingview-widget-container {
+            margin-bottom: 0;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            background: var(--card-bg);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 5px 15px rgba(0, 180, 219, 0.3));
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .lead {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .amount-highlight {
+            color: var(--success-color);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .wallet-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary-color);
+            margin: 25px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wallet-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 180, 219, 0.1);
+            border-radius: 50%;
+        }
+
+        .wallet-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .wallet-address {
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-all;
+        }
+
+        .dashboard_btn {
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 15px 30px;
+            color: #ffffff !important;
+            background: var(--primary-gradient) !important;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 180, 219, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard_btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .dashboard_btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 180, 219, 0.6);
+            color: #ffffff !important;
+        }
+
+        .dashboard_btn:hover::before {
+            left: 100%;
+        }
+
+        .auto-withdraw-link {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px dotted var(--primary-light);
+            transition: all 0.3s ease;
+        }
+
+        .auto-withdraw-link:hover {
+            color: var(--primary-light) !important;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .support-note {
+            background: #fff3e0;
+            border: 1px solid #ffb74d;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #e65100;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 25px 20px;
+            background: var(--dark-bg);
+            color: #94a3b8;
+            border-top: 1px solid #334155;
+        }
+
+        footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Animation for success icon */
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon {
+            animation: successPulse 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+                margin: 20px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .success-icon {
+                font-size: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<section>
+    <div class="tradingview-widget-container">
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500 Index" },
+          { "proName": "FOREXCOM:NSXUSD", "title": "US 100" },
+          { "proName": "FX_IDC:EURUSD",  "title": "EUR/USD" },
+          { "proName": "BITSTAMP:BTCUSD","title": "Bitcoin" },
+          { "proName": "BITSTAMP:ETHUSD","title": "Ethereum" }
+        ],
+        "showSymbolLogo": true,
+        "colorTheme": "dark",
+        "locale": "en"
+      }
+      </script>
+    </div>
+</section>
+
+<div class="main-container">
+    <div class="container">
+        <div class="text-center mb-4">
+            <i class="fas fa-circle-check success-icon"></i>
+            <h2>Withdrawal Successful!</h2>
+
+            <p class="lead">
+                Hi <strong style="color: var(--primary-color);">{{ user_name|capfirst }}</strong>, your withdrawal of  
+                <strong class="amount-highlight">${{ amount_withdrawn }}</strong>
+                has been successfully placed and is pending approval.
+            </p>
+
+            <p style="color: var(--text-secondary);">
+                If your funds don't arrive within 24 hours, please contact our support team.<br>
+                You can also withdraw  
+                <a href="{% url 'select_wallet' %}" class="auto-withdraw-link">automatically</a>.
+            </p>
+        </div>
+
+        <div class="wallet-card">
+            <h4 class="wallet-title">
+                <i class="fas fa-wallet"></i> Wallet Address
+            </h4>
+            <div class="wallet-address">
+                {{ wallet_address }}
+            </div>
+        </div>
+
+        <div class="support-note text-center">
+            <i class="fas fa-clock me-2"></i>
+            <strong>Processing Time:</strong> Withdrawals are typically processed within 2-6 business hours.
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'userprofile:dashboard' %}" class="dashboard_btn">
+                <i class="fas fa-arrow-left"></i> Return to Dashboard
+            </a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2011 StableLinkCapital. All rights reserved.</p>
+    <p>Contact: <a href="mailto:support@stablelinkcapital.com">support@stablelinkcapital.com</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    setTimeout(() => {
+      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+      let userLang = localStorage.getItem('userLang') || navigator.language.split('-')[0];
+      if (!supportedLangs.includes(userLang)) userLang = 'en';
+
+      const select = document.querySelector('select.goog-te-combo');
+      if (select && userLang !== 'en') {
+        select.value = userLang;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      if (select) {
+        select.addEventListener('change', () => {
+          localStorage.setItem('userLang', select.value);
+        });
+      }
+    }, 1000);
+  }
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
+{% endblock %}

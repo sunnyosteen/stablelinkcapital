@@ -58,7 +58,8 @@ body.dark {
     .crypto-danger { background-color: #ef4444; }
     
     .dark .crypto-card {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      background:#37366b;
+;
       border: 1px solid #475569;
       color: #f8fafc;
     }
@@ -219,7 +220,7 @@ body.dark {
     }
     
     .dark .custom-input {
-      background-color: #1e293b;
+      background-color: #060821;
       border-color: #475569;
       color: #f8fafc;
     }
@@ -400,12 +401,63 @@ body.dark {
   /* preloader */
   
   </style>
+  <style>
+    /* Fullscreen Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #060821; /* Professional dark blue */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    transition: opacity 0.6s ease;
+}
+
+/* Gradient Spinner */
+.loader-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #1ebc65;   /* green */
+    border-right-color: #6959ed; /* purple */
+    border-bottom-color: #1ebc65;
+    border-left-color: #6959ed;
+    animation: spin 1s linear infinite;
+}
+
+/* Gradient Text */
+.loader-text {
+    margin-top: 22px;
+    font-size: 26px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.5px;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+  </style>
 </head>
 
 
 <body class="light">
      <!-- ======== PRELOADER START ======== -->
-      {% include 'home/includes/preloader.html' %}
+ <div id="preloader">
+    <div class="loader-circle"></div>
+    <h2 class="loader-text">StablelinkCapital</h2>
+</div>
 
 
  <!-- Header -->
@@ -825,71 +877,107 @@ body.dark {
 
 </div>
 
-<!-- SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
+ 
+    <canvas id="cryptoChart"></canvas>
 
-    const toggleBtn = document.getElementById("refToggleBtn");
-    const section = document.getElementById("referralSection");
-    const copyBtn = document.getElementById("copyLinkBtn");
-    const linkInput = document.getElementById("referralLinkInput");
+    <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="margin-top: 20px;">
+  <div class="tradingview-widget-container__widget"></div>
+  <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener nofollow" target="_blank"><span class="blue-text">Crypto markets</span></a><span class="trademark"> by TradingView</span></div> -->
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+  {
+  "defaultColumn": "overview",
+  "screener_type": "crypto_mkt",
+  "displayCurrency": "USD",
+  "colorTheme": "dark",
+  "isTransparent": true,
+  "locale": "en",
+  "width": "100%",
+  "height": 550
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
 
-    // Show/Hide referral section
-    toggleBtn.addEventListener("click", () => {
-        section.classList.toggle("hidden");
-    });
-
-    // Copy referral link
-    copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(linkInput.value);
-
-        // Change button text
-        copyBtn.textContent = "Link Copied! ✔";
-
-        // Revert after 2 seconds
-        setTimeout(() => {
-            copyBtn.textContent = "Copy Link 🔗";
-        }, 2000);
-    });
-});
-</script>
+<!-- Security Buttons Section -->
+<div class="security-buttons">
+    <button class="security-btn active">
+        <i class="fas fa-lock"></i> Blockchain
+    </button>
+    <button class="security-btn active">
+        <i class="fas fa-wallet"></i> Wallet
+    </button>
+</div>
 
 <style>
-.custom-input {
-    padding: 10px 14px;
-    background: #ffffff;
-    border-radius: 10px;
-    border: none;
-    font-weight: 600;
-}
-
-.copy-btn {
-    color: white;
-    transition: 0.2s;
-}
-
-.copy-btn:hover {
-    opacity: 0.85;
-}
-</style>
-
-
-<!-- Smooth Auto-Scroll Script -->
-<script>
-  const carousel = document.getElementById('statsCarousel');
-  const slides = carousel.children;
-  let index = 0;
-
-  function autoScrollCarousel() {
-    index = (index + 1) % slides.length;
-    carousel.scrollTo({
-      left: slides[index].offsetLeft,
-      behavior: 'smooth'
-    });
+  /* Security Button Container */
+  .security-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px auto;
+      padding: 10px;
   }
 
-  setInterval(autoScrollCarousel, 10000); // scroll every 5 seconds
-</script>
+  /* Styling the Security Buttons */
+  .security-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+      width: 160px; /* Adjusted width for a more compact look */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Active Button Style */
+  .security-btn.active {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%); /* Green for active status */
+  }
+
+  /* Icons Style */
+  .security-btn i {
+      margin-right: 8px; /* Space between the icon and the text */
+      font-size: 18px; /* Icon size adjustment */
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 767px) {
+      .security-buttons {
+          flex-direction: row;
+          justify-content: space-evenly; /* Display buttons side by side on mobile */
+      }
+
+      .security-btn {
+          width: 45%; /* Button width adjusted for mobile */
+          margin-bottom: 10px;
+          font-size: 12px; /* Smaller font size on mobile */
+      }
+  }
+
+  /* Desktop Style */
+  @media (min-width: 768px) {
+      .security-buttons {
+          justify-content: center; /* Center buttons on desktop */
+      }
+
+      .security-btn {
+          width: 160px; /* Fixed width for desktop */
+          font-size: 14px; /* Adjust font size for desktop */
+      }
+  }
+</style>
+
+<!-- Font Awesome Icons Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
 
       </div>
@@ -900,9 +988,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <h3 class="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white" style="display: block !important; width: 200px !important; margin: 20px auto !important; 
              text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
              font-weight: bold !important; color: white !important; 
-             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
-             border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
-             cursor: pointer !important; transition: all 0.3s !important;">Fund Wallet</h3>
+              background: linear-gradient(  135deg,  #524dd3 0%,  #705df5 40%,  #3b34a3 100%) !important; 
+             border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(4, 217, 255, 0.2) !important; 
+             cursor: pointer !important; transition: all 0.3s !important;">Wallet Top-Up</h3>
       
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Deposit Form -->
@@ -1042,7 +1130,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <input type="date" name="paymentDate" class="custom-input" required>
               </div>
 
-              <button type="submit" class="btn btn-primary w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Top Up</button>
+              <button type="submit" class="btn btn-primary w-full" style=" background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);
+">Top Up</button>
             </form>
           </div>
         </div>
@@ -1083,9 +1172,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <h3 class="text-2xl font-bold text-center mb-8 text-gray-900 dark:text-white" style="display: block !important; width: 200px !important; margin: 20px auto !important; 
              text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
              font-weight: bold !important; color: white !important; 
-             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
+              background: linear-gradient(  135deg,  #524dd3 0%,  #705df5 40%,  #3b34a3 100% )!important; 
              border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
-             cursor: pointer !important; transition: all 0.3s !important;">Withdraw Assets</h3>
+             cursor: pointer !important; transition: all 0.3s !important;">Withdraw Profit</h3>
       
       <div class="max-w-2xl mx-auto">
         <div class="crypto-card rounded-2xl p-6">
@@ -1128,7 +1217,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <input type="date" name="paymentDate" class="custom-input" required>
             </div>
 
-            <button type="submit" class="btn btn-primary w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Submit Withdrawal</button>
+            <button type="submit" class="btn btn-primary w-full" style="background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);">Submit Withdrawal</button>
           </form>
         </div>
       </div>
@@ -1188,7 +1277,7 @@ document.addEventListener("DOMContentLoaded", function () {
  <h3 style="display: block !important; width: 200px !important; margin: 20px auto !important; 
              text-align: center !important; padding: 12px 24px !important; font-size: 1.125rem !important; 
              font-weight: bold !important; color: white !important; 
-             background: linear-gradient(to right, #eb252f, #eb252f) !important; 
+            background: linear-gradient(  135deg,  #524dd3 0%,  #705df5 40%,  #3b34a3 100%) !important; 
              border-radius: 9999px !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important; 
              cursor: pointer !important; transition: all 0.3s !important;">
     KYC
@@ -1240,7 +1329,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <input type="file" name="trading_certificates" class="custom-input">
             </div>
 
-            <button type="submit" class="btn btn-success w-full" style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Save Changes</button>
+            <button type="submit" class="btn btn-success w-full" style="  background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);">Save Changes</button>
           </form>
         </div>
       </div>
@@ -1268,13 +1357,14 @@ document.addEventListener("DOMContentLoaded", function () {
         <a href="{% url 'home' %}" 
    class="nav-item py-3 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105">
   
-  <!-- Home Icon with background -->
-  <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-[#ee2021] to-[#ee2021] flex items-center justify-center shadow-lg" >
+ <!-- Home Icon with background -->
+<div class="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
+     style="background: #524dd3;">
     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M3 9.75L12 4l9 5.75V19a2 2 0 0 1-2 2h-4a1 1 0 0 1-1-1v-4H10v4a1 1 0 0 1-1 1H5a2 2 0 0 1-2-2V9.75z"/>
     </svg>
-  </div>
+</div>
 
   <span class="text-xs text-white! mt-1 font-medium">Home</span>
 </a>
@@ -1686,6 +1776,176 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 </script>
+
+
+<script>
+  const ctx = document.getElementById('cryptoChart').getContext('2d');
+
+  const cryptoChart = new Chart(ctx, {
+    type: 'doughnut', // Doughnut chart type
+    data: {
+        labels: ['Bitcoin', 'Ethereum', 'Ripple', 'Litecoin'], // Labels for chart sections
+        datasets: [{
+            label: 'Global Crypto Performance',
+            data: [55, 25, 15, 5], // Adjust these values to match real data
+            backgroundColor: [
+                '#34d399', // Green for Bitcoin
+                '#60a5fa', // Blue for Ethereum
+                '#facc15', // Yellow for Ripple
+                '#f87171'  // Red for Litecoin
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top', // Position of the legend
+                labels: {
+                    color: '#fff' // Set legend text color to white
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return tooltipItem.label + ': ' + tooltipItem.raw + '%'; // Show percentage in tooltip
+                    }
+                }
+            }
+        }
+    }
+  });
+</script>
+
+<style>
+  /* Container to hold the chart */
+  .chart-container {
+      max-width: 700px; /* Increased container width */
+      margin: 50px auto; /* Centers the chart container */
+      background-color: transparent; /* Remove background color */
+      padding: 40px; /* Increased padding for better spacing */
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* More prominent shadow for visual appeal */
+      text-align: center;
+      margin-bottom: 50px; /* Adds space below to separate from footer */
+      overflow: hidden; /* Ensures the chart stays within the container */
+  }
+
+  /* Header styling */
+  h2 {
+      color: #fff; /* White color for the header */
+      margin-bottom: 25px; /* Adds some space below the header */
+      font-size: 1.75rem; /* Adjust font size */
+  }
+
+  /* Canvas styling */
+  canvas {
+      border-radius: 8px;
+      width: 100%; /* Ensures canvas is responsive */
+      height: 100%; /* Ensures it takes up full container height */
+      max-width: 100%; /* Prevents any overflow */
+      max-height: 500px; /* Ensures the canvas does not exceed 500px in height */
+  }
+
+  /* Centering the chart on mobile and desktop */
+  @media (max-width: 767px) {
+      .chart-container {
+          width: 90%; /* Makes it responsive on mobile */
+      }
+  }
+  
+  /* Ensuring the chart stays centered on desktops */
+  @media (min-width: 768px) {
+      .chart-container {
+          width: 80%; /* Adjust the width on desktop */
+      }
+  }
+
+  /* Style for coin names inside the chart */
+  .chart-container .coin-name {
+      color: #34d399; /* Success green color for coin names */
+      font-weight: 600; /* Makes the coin names bold */
+      font-size: 1rem; /* Adjust font size for readability */
+  }
+</style>
+
+
+<!-- SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toggleBtn = document.getElementById("refToggleBtn");
+    const section = document.getElementById("referralSection");
+    const copyBtn = document.getElementById("copyLinkBtn");
+    const linkInput = document.getElementById("referralLinkInput");
+
+    // Show/Hide referral section
+    toggleBtn.addEventListener("click", () => {
+        section.classList.toggle("hidden");
+    });
+
+    // Copy referral link
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(linkInput.value);
+
+        // Change button text
+        copyBtn.textContent = "Link Copied! ✔";
+
+        // Revert after 2 seconds
+        setTimeout(() => {
+            copyBtn.textContent = "Copy Link 🔗";
+        }, 2000);
+    });
+});
+</script>
+
+<style>
+.custom-input {
+    padding: 10px 14px;
+    background: #ffffff;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+}
+
+.copy-btn {
+    color: white;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    opacity: 0.85;
+}
+</style>
+
+
+<!-- Smooth Auto-Scroll Script -->
+<script>
+  const carousel = document.getElementById('statsCarousel');
+  const slides = carousel.children;
+  let index = 0;
+
+  function autoScrollCarousel() {
+    index = (index + 1) % slides.length;
+    carousel.scrollTo({
+      left: slides[index].offsetLeft,
+      behavior: 'smooth'
+    });
+  }
+
+  setInterval(autoScrollCarousel, 10000); // scroll every 5 seconds
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        document.getElementById("preloader").style.display = "none";
+    }, 1200); 
+});
+</script>
+
 
 <!-- Google Translate script -->
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

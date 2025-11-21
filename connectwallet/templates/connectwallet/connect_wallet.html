@@ -413,6 +413,17 @@
             padding: 15px;
         }
     }
+
+
+    @media (max-width: 768px) {
+    .mobile-center-btn {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
 </style>
 </head>
 <body class="min-h-screen bg-gray-900 text-white">
@@ -424,17 +435,19 @@
                 <div class="flex items-center">
                     <div class="relative">
                         <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-xl blur-lg opacity-20"></div>
-<img src="{% static 'images/block-chain.avif' %}" alt="WalletConnect Logo" class="relative h-14 w-14">
+<img src="{% static 'images/blockchain.jpeg' %}" alt="WalletConnect Logo" class="relative h-14 w-14">
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="{% url 'home' %}" class="text-gray-300 hover:text-white transition-all duration-300">Home</a>
-                    <a href="{% url 'about' %}" class="text-gray-300 hover:text-white transition-all duration-300">About</a>
-                    <a href="{% url 'investment' %}" class="text-gray-300 hover:text-white transition-all duration-300">Investment</a>
-                    <a href="{% url 'contact' %}" class="text-gray-300 hover:text-white transition-all duration-300">Contact</a>
-                </div>
+                <div class="hidden lg:flex items-center space-x-8 mobile-center-btn">
+    <a href="{% url 'userprofile:dashboard' %}"
+       class="px-4 py-2 rounded-lg text-white font-semibold shadow-md transition-all duration-300"
+       style="background: linear-gradient(135deg, #1ebc65 0%, #6959ed 100%);">
+       Dashboard
+    </a>
+</div>
+
 
                 <!-- Security Badge -->
                 <div class="flex items-center space-x-2 text-emerald-400">

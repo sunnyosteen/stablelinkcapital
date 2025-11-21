@@ -541,7 +541,7 @@ def transaction_statement(request):
     transactions = Transaction.objects.filter(user=user).order_by('-created_at')
 
     # Render the transaction statement page with the necessary context
-    return render(request, 'userprofile/transaction_statement.html', {
+    return render(request, 'userprofile/transaction_details.html', {
         'user': user,
         'transactions': transactions  # Pass the transactions to the template
     })
