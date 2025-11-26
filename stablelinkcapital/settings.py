@@ -20,7 +20,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY", SECRET_KEY)
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-2*i#bz-_d3kayf8_^&rl+6dha(^do1m6kwa$sx0xrg02=t4(@i"  # fallback for local
+)
 
 DEBUG = os.getenv("DEBUG", "True") == "True"
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -119,7 +122,7 @@ else:
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
-    
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -154,13 +157,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
 
-# This is optional if your static folder is at project root
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # points to your root-level static folder
-]
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+
+STATIC_URL = "/static/"
+
+if DEBUG:
+    # LOCAL DEVELOPMENT (Django serves static files)
+    STATICFILES_DIRS = [
+        BASE_DIR / "static",   # only if you have a local static/ folder
+    ]
+else:
+    # PRODUCTION (WhiteNoise serves static files)
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+# For production (collectstatic)
+STATIC_ROOT = BASE_DIR / "staticfiles"  
 
 # For production (collectstatic)
 STATIC_ROOT = BASE_DIR / "staticfiles"  
