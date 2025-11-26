@@ -86,42 +86,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'stablelinkcapital.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import dj_database_url
+import os
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Check if Railway DB variables are available
-USE_POSTGRES = os.getenv("DB_HOST") not in [None, "", "None"]
-
-if USE_POSTGRES:
-    print("📡 Using PostgreSQL (Railway Production Database)")
-
+if DATABASE_URL:
+    print("🔵 Using PRODUCTION/PostgreSQL database from DATABASE_URL")
     DATABASES = {
-        "default": {
-            "ENGINE": os.getenv("DB_ENGINE", "django.db.backends.postgresql"),
-            "NAME": os.getenv("DB_NAME"),
-            "USER": os.getenv("DB_USER"),
-            "PASSWORD": os.getenv("DB_PASSWORD"),
-            "HOST": os.getenv("DB_HOST"),
-            "PORT": os.getenv("DB_PORT", "5432"),
-        }
+        'default': dj_database_url.config(conn_max_age=600)
     }
-
 else:
-    print("💻 Using SQLite3 (Local Development Database)")
-
+    print("🟢 Using LOCAL SQLite database")
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -267,5 +250,11 @@ LOGGING = {
 }
 
 
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.up.railway.app",
+    "https://yourcustomdomain.com",   # if you have one
+]
 
 
